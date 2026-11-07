@@ -52,12 +52,21 @@ const gallerie = defineCollection({
   }),
 });
 
+export const SEZIONI = ['Chi siamo', 'La Storia', 'I.K.G.A.', 'Altro'] as const;
+
 const pagine = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/pagine' }),
   schema: z.object({
     title: z.string(),
+    sezione: z.enum(SEZIONI).default('Altro'),
     order: z.number().default(99),
     menu: z.boolean().default(true),
+    cover: z.string().optional(),
+    cover_alt: z.string().optional(),
+    galleria: z
+      .array(z.object({ immagine: z.string(), didascalia: z.string().optional() }))
+      .default([]),
+    allegati: z.array(z.object({ titolo: z.string(), file: z.string() })).default([]),
   }),
 });
 

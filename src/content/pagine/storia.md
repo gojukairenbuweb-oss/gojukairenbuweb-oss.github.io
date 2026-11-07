@@ -1,12 +1,45 @@
 ---
-title: La storia del Goju Ryu
-order: 4
+title: La Storia
+sezione: La Storia
+order: 1
 menu: true
+cover: /media/pagine/storia/maestri-storici.webp
+cover_alt: Foto storica dei maestri del Goju Ryu
 ---
-Il **Goju Ryu** ("stile duro-morbido") nasce a Okinawa negli anni '20 per opera del Maestro **Chojun Miyagi**, allievo di Kanryo Higaonna. Lo stile unisce tecniche dure e lineari a movimenti morbidi e circolari, con grande attenzione alla respirazione.
+## La Storia del Karate Goju Ryu
 
-Il Maestro **Gogen Yamaguchi** (1909–1989) diffonde lo stile in Giappone e nel mondo fondando il **Goju Kai**. Oggi la sua scuola prosegue attraverso l'I.K.G.A.
+Avrete notato, in occasione delle varie gare che alcuni di voi si sono trovati ad affrontare, che il nostro stile di karate non è certo il più praticato in Italia. La stragrande maggioranza delle scuole italiane, infatti, insegna lo stile shotokan.
 
-I kata fondamentali sono **Sanchin** e **Tensho**; tra i kata avanzati: Saifa, Seiunchin, Shisochin, Sanseiru, Seipai, Seisan, Kururunfa e Suparinpei.
+Effettivamente, senza nulla togliere agli altri stili, dobbiamo considerarci dei privilegiati ad aver avuto la fortuna di venire a contatto con una realtà così nobile e completa.
 
-> Testo sintetico per il PoC: la versione completa va migrata e corretta dal sito attuale.
+La parola Go-Ju significa "duro e morbido" e sottolinea l'importanza data in questo stile sia alle tecniche dure che a quelle morbide, senza le quali non sarebbe possibile un completo adattamento a ogni situazione di lotta.
+
+Cerchiamo di addentrarci nelle origini di questo antico stile, e di conoscere i personaggi che contribuiscono alla sua nascita.
+
+![Hanshi Gogen Yamaguchi 10° Dan](/media/pagine/storia/gogen-yamaguchi.webp)
+
+**Gogen Yamaguchi**, 10° dan, nacque in Giappone nel 1907 e morì nel 1989. Yamaguchi sensei, fondatore del goju ryu giapponese e della goju kai, era noto come "il gatto" presso i suoi allievi occidentali, che lo soprannominarono così per via dei lunghi capelli e dei movimenti veloci e felini.
+
+Nel 1964 Yamaguchi aiutò a costituire la All Japan Karate-do Federation, che riuscì a unificare alcuni dei principali stili di karate come lo shotokan e il wado ryu.
+
+Nel corso della sua carriera contribuì in modo significativo all'evoluzione del karate giapponese. Lo stile goju ha origine nell'isola di Okinawa (Giappone).
+
+![Hanshi Miyagi Chojun](/media/pagine/storia/chojun-miyagi.webp)
+
+**Chojun Miyagi** (1888-1953), suo successore, studiò gli stili nativi di Okinawa e il Naha-te. Il grande rispetto con cui Miyagi trattava e si prendeva cura del suo insegnante divennero famosi in Okinawa. Kanryo sensei non insegnò a Miyagi solo la tecnica; egli integrava l'allenamento con ore di conversazione.
+
+Spesso dava "compiti a casa" al suo allievo, ma anche senza tale incoraggiamento, Miyagi pensava ed era continuamente concentrato sul karate. Pensate che ogni mattina, appena sveglio, egli scansava la zanzariera e scivolava sotto di essa con un suri ashi finendo in neko ashi dachi prima che la zanzariera ricadesse al suo posto.
+
+Poi si esercitava alle tecniche di pugno contro la zanzariera come bersaglio. Negli anni '20 Miyagi sviluppò ciò che aveva imparato da Higashionna e fondò il karate Goju ryu.
+
+Con il Goju Miyagi voleva combinare movimenti duri e forzati con movimenti morbidi o cedevoli, complementari fra loro. Questo concetto che unisce le forze opposte della natura è chiamato anche yin e yang in cinese o in e yo in giapponese.
+
+Nel 1929 Miyagi visitò il Giappone e nominò Yamaguchi sensei capo del goju ryu in Giappone. Nel 1939, a causa della guerra, Yamaguchi dovette lasciare la scuola Goju kai per andare in Manciuria come ufficiale del governo giapponese.
+
+Alla fine della guerra, Yamaguchi fu preso prigioniero. Fu scelto per insegnare il karate ai soldati russi, e finalmente fu rilasciato nel 1945 e tornò in Giappone. Dopo la guerra, le arti marziali furono messe fuori legge, ma per fortuna il Karate non fu bandito come le altre discipline.
+
+Il singolare modo di presentarsi di Yamaguchi e i vecchi valori tradizionali dei samurai lo aiutarono a espandere massicciamente la Goju kai all'estero. Verso il 1970 il sistema di Yamaguchi divenne uno degli stili principali di Karate.
+
+Dopo la morte di Yamaguchi sensei nel 1989, l'organizzazione Goju kai ha stabilito la sua base in California; inoltre sono germogliate molte organizzazioni che praticano il Goju Ryu, in tutto il mondo.
+
+![Tre generazioni di maestri Goju Kai](/media/pagine/storia/tre-maestri.webp)

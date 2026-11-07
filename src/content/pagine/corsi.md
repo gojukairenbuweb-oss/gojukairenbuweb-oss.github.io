@@ -1,15 +1,16 @@
 ---
-title: Corsi e orari
-order: 3
+title: I Corsi
+sezione: Chi siamo
+order: 4
 menu: true
 ---
-**Anno sportivo:** 2026/27 *(da confermare)*
+I corsi del Maestro:
 
-| Corso | Giorni | Orario |
-| --- | --- | --- |
-| Bambini | Lunedì, mercoledì, venerdì | 17:00 – 18:00 |
-| Agonisti | Lunedì, mercoledì, venerdì | 18:30 – 20:00 |
+**Giorni:** Lunedì - Mercoledì - Venerdì (Facoltativi)
 
-**Sede:** Via Antonino Pio 78, Roma (zona San Paolo).
+| Corso | Orario |
+| --- | --- |
+| Bambini | dalle 17.00 alle 18.00 |
+| Agonisti | dalle 18.30 alle 20.00 |
 
-Per informazioni e lezione di prova: *contatti da inserire*.
+**Sede:** Via Antonino Pio 78, Roma – [vedi Dove siamo](/dove-siamo/)

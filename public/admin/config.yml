@@ -16,6 +16,7 @@ backend:
     deleteMedia: 'Eliminato {{path}}'
 
 locale: it
+logo_url: /admin/logo.png
 
 media_folder: public/media
 public_folder: /media
@@ -113,9 +114,34 @@ collections:
     folder: src/content/pagine
     create: false
     delete: false
-    summary: '{{title}}'
+    summary: '{{sezione}} › {{title}}'
+    sortable_fields: [sezione, order, title]
+    media_folder: '/public/media/pagine/{{slug}}'
+    public_folder: '/media/pagine/{{slug}}'
     fields:
       - { name: title, label: Titolo, widget: string }
-      - { name: order, label: Ordine nel menu, widget: number, value_type: int, default: 99 }
+      - name: sezione
+        label: Sezione del menu
+        widget: select
+        options: [Chi siamo, La Storia, I.K.G.A., Altro]
+      - { name: order, label: Ordine nella sezione, widget: number, value_type: int, default: 99 }
       - { name: menu, label: Mostra nel menu, widget: boolean, default: true }
+      - { name: cover, label: Immagine principale, widget: image, required: false }
+      - { name: cover_alt, label: Descrizione immagine principale, widget: string, required: false }
       - { name: body, label: Testo, widget: markdown }
+      - name: galleria
+        label: Galleria foto
+        label_singular: Foto
+        widget: list
+        required: false
+        fields:
+          - { name: immagine, label: Immagine, widget: image }
+          - { name: didascalia, label: Didascalia, widget: string, required: false }
+      - name: allegati
+        label: Documenti allegati
+        label_singular: Documento
+        widget: list
+        required: false
+        fields:
+          - { name: titolo, label: Titolo, widget: string }
+          - { name: file, label: File (PDF), widget: file }

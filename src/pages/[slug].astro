@@ -4,13 +4,56 @@ import Base from '../layouts/Base.astro';
 
 export async function getStaticPaths() {
   const pagine = await getCollection('pagine');
-  return pagine.map((p) => ({ params: { slug: p.id }, props: { pagina: p } }));
+  return pagine.map((p) => ({
+    params: { slug: p.id },
+    props: {
+      pagina: p,
+      fratelli: pagine
+        .filter((x) => x.data.sezione === p.data.sezione && x.data.menu)
+        .sort((a, b) => a.data.order - b.data.order),
+    },
+  }));
 }
-const { pagina } = Astro.props;
+const { pagina, fratelli } = Astro.props;
 const { Content } = await render(pagina);
+const d = pagina.data;
 ---
 
-<Base title={pagina.data.title}>
-  <h1>{pagina.data.title}</h1>
-  <Content />
+<Base title={d.title}>
+  <div class="page-layout">
+    {fratelli.length > 1 && (
+      <aside class="section-nav" aria-label={`Sezione ${d.sezione}`}>
+        <p class="section-title">{d.sezione}</p>
+        <ul>
+          {fratelli.map((f) => (
+            <li><a href={`/${f.id}/`} aria-current={f.id === pagina.id ? 'page' : undefined}>{f.data.title}</a></li>
+          ))}
+        </ul>
+      </aside>
+    )}
+    <article class="page">
+      <h1>{d.title}</h1>
+      {d.cover && <img class="cover" src={d.cover} alt={d.cover_alt ?? ''} />}
+      <div class="prose"><Content /></div>
+
+      {d.allegati.length > 0 && (
+        <ul class="attachments">
+          {d.allegati.map((a) => (
+            <li><a href={a.file} target="_blank" rel="noopener">📄 {a.titolo}</a></li>
+          ))}
+        </ul>
+      )}
+
+      {d.galleria.length > 0 && (
+        <section class="gallery" aria-label="Galleria">
+          {d.galleria.map((g) => (
+            <figure>
+              <a href={g.immagine}><img src={g.immagine} alt={g.didascalia ?? ''} loading="lazy" /></a>
+              {g.didascalia && <figcaption>{g.didascalia}</figcaption>}
+            </figure>
+          ))}
+        </section>
+      )}
+    </article>
+  </div>
 </Base>
