@@ -1,0 +1,23 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { formatDate, isPublished, byDateDesc } from '../../lib/format';
+
+const news = (await getCollection('news', isPublished)).sort(byDateDesc);
+---
+
+<Base title="News">
+  <h1>News</h1>
+  <ul class="cards">
+    {news.map((n) => (
+      <li class="card"><a href={`/news/${n.id}/`}>
+        {n.data.cover && <img src={n.data.cover} alt="" loading="lazy" />}
+        <div class="body">
+          <strong>{n.data.title}</strong>
+          <div class="meta">{formatDate(n.data.date)}{n.data.draft && ' · BOZZA'}</div>
+          {n.data.summary && <p>{n.data.summary}</p>}
+        </div>
+      </a></li>
+    ))}
+  </ul>
+</Base>

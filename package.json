@@ -1,0 +1,20 @@
+{
+  "name": "gojuren-poc",
+  "private": true,
+  "type": "module",
+  "version": "0.1.0",
+  "description": "PoC sito A.S.D. Renbukan (Goju Kai Roma) - Astro + Sveltia CMS",
+  "scripts": {
+    "copy-cms": "node scripts/copy-cms.mjs",
+    "dev": "npm run copy-cms && astro dev",
+    "build": "npm run copy-cms && astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@sveltia/cms": "^0.261.0",
+    "astro": "^7.4.7"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

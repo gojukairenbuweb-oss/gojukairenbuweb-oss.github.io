@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { formatDate, isPublished, byDateDesc } from '../../lib/format';
+
+const gallerie = (await getCollection('gallerie', isPublished)).sort(byDateDesc);
+const anni = [...new Set(gallerie.map((g) => g.data.date.getFullYear()))].sort((a, b) => b - a);
+---
+
+<Base title="Gallerie">
+  <h1>Gallerie fotografiche</h1>
+  <nav class="filters" aria-label="Anni">
+    {anni.map((a) => <a href={`#anno-${a}`}>{a}</a>)}
+  </nav>
+  {anni.map((anno) => (
+    <section id={`anno-${anno}`}>
+      <h2>{anno}</h2>
+      <ul class="cards">
+        {gallerie.filter((g) => g.data.date.getFullYear() === anno).map((g) => (
+          <li class="card"><a href={`/gallerie/${g.id}/`}>
+            {g.data.foto[0] && <img src={g.data.foto[0].immagine} alt="" loading="lazy" />}
+            <div class="body">
+              <strong>{g.data.title}</strong>
+              <div class="meta">{g.data.tipo} · {g.data.federazione} · {g.data.foto.length} foto</div>
+            </div>
+          </a></li>
+        ))}
+      </ul>
+    </section>
+  ))}
+</Base>

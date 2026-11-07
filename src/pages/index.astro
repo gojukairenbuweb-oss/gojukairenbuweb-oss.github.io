@@ -1,0 +1,48 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { formatDate, isPublished, byDateDesc } from '../lib/format';
+
+const news = (await getCollection('news', isPublished)).sort(byDateDesc).slice(0, 3);
+const oggi = new Date(new Date().toDateString());
+const eventi = (await getCollection('eventi', isPublished))
+  .filter((e) => e.data.date >= oggi)
+  .sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf())
+  .slice(0, 3);
+const gallerie = (await getCollection('gallerie', isPublished)).sort(byDateDesc).slice(0, 3);
+---
+
+<Base title="Home">
+  <h1>Karate Goju Kai a Roma</h1>
+  <p>
+    A.S.D. Renbukan, rappresentanza italiana I.K.G.A. Corsi per bambini e agonisti diretti dallo
+    Shihan Luciano Masci. <a href="/corsi/">Orari e iscrizioni</a>.
+  </p>
+
+  <h2>Ultime news</h2>
+  <ul class="cards">
+    {news.map((n) => (
+      <li class="card"><a href={`/news/${n.id}/`}>
+        {n.data.cover && <img src={n.data.cover} alt="" loading="lazy" />}
+        <div class="body"><strong>{n.data.title}</strong><div class="meta">{formatDate(n.data.date)}</div></div>
+      </a></li>
+    ))}
+  </ul>
+
+  <h2>Prossimi eventi</h2>
+  {eventi.length === 0 ? <p class="meta">Nessun evento in programma.</p> : (
+    <ul>
+      {eventi.map((e) => <li><a href={`/eventi/${e.id}/`}>{e.data.title}</a> – {formatDate(e.data.date)}{e.data.luogo && `, ${e.data.luogo}`}</li>)}
+    </ul>
+  )}
+
+  <h2>Gallerie recenti</h2>
+  <ul class="cards">
+    {gallerie.map((g) => (
+      <li class="card"><a href={`/gallerie/${g.id}/`}>
+        {g.data.foto[0] && <img src={g.data.foto[0].immagine} alt="" loading="lazy" />}
+        <div class="body"><strong>{g.data.title}</strong><div class="meta">{g.data.tipo} · {formatDate(g.data.date)}</div></div>
+      </a></li>
+    ))}
+  </ul>
+</Base>

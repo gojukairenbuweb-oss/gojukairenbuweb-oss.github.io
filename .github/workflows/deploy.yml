@@ -1,0 +1,48 @@
+# Build e deploy sul server tramite runner SELF-HOSTED (consigliato per il PoC):
+# il runner gira sul server, fa il pull del repo e copia il sito in locale.
+# Nessuna porta SSH in ingresso da aprire verso GitHub.
+#
+# Prerequisiti (vedi README):
+#  - runner registrato su questo repo con label "self-hosted"
+#  - variabile di repository DEPLOY_PATH (es. /var/www/gojuren-test)
+#  - rsync installato sul server
+name: Build & deploy (self-hosted)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy (copia locale)
+        env:
+          DEPLOY_PATH: ${{ vars.DEPLOY_PATH }}
+        run: |
+          test -n "$DEPLOY_PATH" || { echo "Variabile DEPLOY_PATH non impostata"; exit 1; }
+          test -d "$DEPLOY_PATH" || { echo "$DEPLOY_PATH non esiste"; exit 1; }
+          rsync -a --delete --checksum dist/ "$DEPLOY_PATH/"
+          echo "Deploy completato in $DEPLOY_PATH"

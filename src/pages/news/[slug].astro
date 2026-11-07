@@ -1,0 +1,19 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { formatDate, isPublished } from '../../lib/format';
+
+export async function getStaticPaths() {
+  const news = await getCollection('news', isPublished);
+  return news.map((n) => ({ params: { slug: n.id }, props: { item: n } }));
+}
+const { item } = Astro.props;
+const { Content } = await render(item);
+---
+
+<Base title={item.data.title} description={item.data.summary}>
+  <p class="meta"><a href="/news/">← News</a> · {formatDate(item.data.date)}</p>
+  <h1>{item.data.title}</h1>
+  {item.data.cover && <img src={item.data.cover} alt="" />}
+  <Content />
+</Base>

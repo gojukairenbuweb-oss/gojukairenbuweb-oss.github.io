@@ -1,0 +1,46 @@
+---
+import { getCollection } from 'astro:content';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description = 'A.S.D. Renbukan – Karate Goju Kai, Roma' } = Astro.props;
+const pagine = (await getCollection('pagine', (p) => p.data.menu)).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+const year = new Date().getFullYear();
+---
+
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <!-- PoC: non indicizzare -->
+    <meta name="robots" content="noindex, nofollow" />
+    <title>{title} | A.S.D. Renbukan Goju Kai Roma</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/">A.S.D. Renbukan <span>Goju Kai Roma</span></a>
+      <nav aria-label="Menu principale">
+        <ul>
+          {pagine.map((p) => <li><a href={`/${p.id}/`}>{p.data.title}</a></li>)}
+          <li><a href="/news/">News</a></li>
+          <li><a href="/eventi/">Eventi</a></li>
+          <li><a href="/gallerie/">Gallerie</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <p>A.S.D. Renbukan – Via Antonino Pio 78, Roma</p>
+      <p>© {year} · Sito di prova (PoC) – contenuti non definitivi</p>
+    </footer>
+  </body>
+</html>

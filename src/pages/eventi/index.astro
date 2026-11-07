@@ -1,0 +1,20 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { formatDate, isPublished, byDateDesc } from '../../lib/format';
+
+const oggi = new Date(new Date().toDateString());
+const tutti = await getCollection('eventi', isPublished);
+const futuri = tutti.filter((e) => e.data.date >= oggi).sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
+const passati = tutti.filter((e) => e.data.date < oggi).sort(byDateDesc);
+---
+
+<Base title="Eventi">
+  <h1>Eventi</h1>
+  <h2>In programma</h2>
+  {futuri.length === 0 ? <p class="meta">Nessun evento in programma.</p> : (
+    <ul>{futuri.map((e) => <li><a href={`/eventi/${e.id}/`}>{e.data.title}</a> – {formatDate(e.data.date)}{e.data.luogo && `, ${e.data.luogo}`} <span class="meta">({e.data.tipo})</span></li>)}</ul>
+  )}
+  <h2>Archivio</h2>
+  <ul>{passati.map((e) => <li><a href={`/eventi/${e.id}/`}>{e.data.title}</a> – {formatDate(e.data.date)}</li>)}</ul>
+</Base>

@@ -1,0 +1,48 @@
+# ALTERNATIVA: build sui runner GitHub e deploy via SSH/rsync.
+# Per usarla: copia questo file in .github/workflows/deploy.yml (al posto di quello self-hosted).
+#
+# Secrets di repository (Settings → Secrets and variables → Actions):
+#   SSH_HOST, SSH_PORT, SSH_USER, SSH_PRIVATE_KEY (chiave dedicata, solo deploy),
+#   SSH_KNOWN_HOSTS (output di: ssh-keyscan -p <porta> <host>)
+# Variabile di repository: DEPLOY_PATH (es. /var/www/gojuren-test)
+#
+# Nota: i runner GitHub hanno IP dinamici, quindi la porta SSH deve essere raggiungibile da internet.
+name: Build & deploy (SSH)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Configura SSH
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          printf '%s\n' "${{ secrets.SSH_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+      - name: Deploy via rsync
+        env:
+          DEPLOY_PATH: ${{ vars.DEPLOY_PATH }}
+        run: |
+          rsync -az --delete --checksum \
+            -e "ssh -i ~/.ssh/deploy_key -p ${{ secrets.SSH_PORT }} -o StrictHostKeyChecking=yes" \
+            dist/ "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:$DEPLOY_PATH/"

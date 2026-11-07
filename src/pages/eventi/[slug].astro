@@ -1,0 +1,19 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { formatDate, isPublished } from '../../lib/format';
+
+export async function getStaticPaths() {
+  const eventi = await getCollection('eventi', isPublished);
+  return eventi.map((e) => ({ params: { slug: e.id }, props: { item: e } }));
+}
+const { item } = Astro.props;
+const { Content } = await render(item);
+---
+
+<Base title={item.data.title}>
+  <p class="meta"><a href="/eventi/">← Eventi</a></p>
+  <h1>{item.data.title}</h1>
+  <p class="meta">{item.data.tipo} · {formatDate(item.data.date)}{item.data.luogo && ` · ${item.data.luogo}`}</p>
+  <Content />
+</Base>

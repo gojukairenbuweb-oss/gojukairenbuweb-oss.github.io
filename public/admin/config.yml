@@ -1,0 +1,121 @@
+# Configurazione Sveltia CMS – PoC gojuren
+# Documentazione: https://github.com/sveltia/sveltia-cms
+
+backend:
+  name: github
+  repo: gojukairenbuweb-oss/gojuren-poc
+  branch: main
+  # Fase 1: login con Personal Access Token (fine-grained, solo questo repo, Contents: read & write).
+  # Fase 2 (OAuth "Accedi con GitHub"): decommentare e puntare al proxy di autenticazione.
+  # base_url: https://auth.tuodominio.it
+  commit_messages:
+    create: 'Nuovo {{collection}}: {{slug}}'
+    update: 'Aggiornato {{collection}}: {{slug}}'
+    delete: 'Eliminato {{collection}}: {{slug}}'
+    uploadMedia: 'Caricato {{path}}'
+    deleteMedia: 'Eliminato {{path}}'
+
+locale: it
+
+media_folder: public/media
+public_folder: /media
+
+# Ottimizzazione immagini nel browser al caricamento: WebP, lato lungo max 2000 px
+media_libraries:
+  default:
+    config:
+      max_file_size: 20000000
+      transformations:
+        raster_image:
+          format: webp
+          quality: 82
+          width: 2000
+          height: 2000
+
+collections:
+  - name: news
+    label: News
+    label_singular: News
+    folder: src/content/news
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    summary: '{{title}} – {{date}}'
+    sortable_fields: [date, title]
+    fields:
+      - { name: title, label: Titolo, widget: string }
+      - { name: date, label: Data, widget: datetime, time_format: false }
+      - { name: summary, label: Sommario breve, widget: text, required: false }
+      - { name: cover, label: Immagine di copertina, widget: image, required: false }
+      - { name: draft, label: Bozza (non pubblicare), widget: boolean, default: true }
+      - { name: body, label: Testo, widget: markdown }
+
+  - name: eventi
+    label: Eventi
+    label_singular: Evento
+    folder: src/content/eventi
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    summary: '{{title}} – {{date}}'
+    fields:
+      - { name: title, label: Titolo, widget: string }
+      - { name: date, label: Data dell'evento, widget: datetime, time_format: false }
+      - { name: luogo, label: Luogo, widget: string, required: false }
+      - name: tipo
+        label: Tipo
+        widget: select
+        options: [Gara, Seminario, Esame, Corso, Altro]
+        default: Gara
+      - { name: draft, label: Bozza (non pubblicare), widget: boolean, default: true }
+      - { name: body, label: Descrizione, widget: markdown, required: false }
+
+  - name: gallerie
+    label: Gallerie
+    label_singular: Galleria
+    folder: src/content/gallerie
+    create: true
+    slug: '{{year}}-{{slug}}'
+    summary: '{{title}} ({{tipo}})'
+    media_folder: '/public/media/gallerie/{{slug}}'
+    public_folder: '/media/gallerie/{{slug}}'
+    fields:
+      - { name: title, label: Titolo, widget: string }
+      - { name: date, label: Data, widget: datetime, time_format: false }
+      - { name: luogo, label: Luogo, widget: string, required: false }
+      - name: tipo
+        label: Tipo
+        widget: select
+        options:
+          - Gara regionale
+          - Gara nazionale
+          - Gara internazionale
+          - Europei/Mondiali IKGA
+          - Seminario
+          - Foto di gruppo
+      - name: federazione
+        label: Federazione
+        widget: select
+        options: [FIK, IKGA, Altro]
+        default: FIK
+      - { name: draft, label: Bozza (non pubblicare), widget: boolean, default: true }
+      - name: foto
+        label: Foto
+        label_singular: Foto
+        widget: list
+        hint: 'La prima foto è la copertina. Niente nomi di minori nelle didascalie.'
+        fields:
+          - { name: immagine, label: Immagine, widget: image }
+          - { name: didascalia, label: Didascalia, widget: string, required: false }
+      - { name: body, label: Note, widget: markdown, required: false }
+
+  - name: pagine
+    label: Pagine
+    label_singular: Pagina
+    folder: src/content/pagine
+    create: false
+    delete: false
+    summary: '{{title}}'
+    fields:
+      - { name: title, label: Titolo, widget: string }
+      - { name: order, label: Ordine nel menu, widget: number, value_type: int, default: 99 }
+      - { name: menu, label: Mostra nel menu, widget: boolean, default: true }
+      - { name: body, label: Testo, widget: markdown }

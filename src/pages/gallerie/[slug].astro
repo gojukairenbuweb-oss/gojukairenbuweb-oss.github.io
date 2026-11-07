@@ -1,0 +1,27 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { formatDate, isPublished } from '../../lib/format';
+
+export async function getStaticPaths() {
+  const gallerie = await getCollection('gallerie', isPublished);
+  return gallerie.map((g) => ({ params: { slug: g.id }, props: { item: g } }));
+}
+const { item } = Astro.props;
+const { Content } = await render(item);
+---
+
+<Base title={item.data.title}>
+  <p class="meta"><a href="/gallerie/">← Gallerie</a></p>
+  <h1>{item.data.title}</h1>
+  <p class="meta">{item.data.tipo} · {item.data.federazione} · {formatDate(item.data.date)}{item.data.luogo && ` · ${item.data.luogo}`}</p>
+  <Content />
+  <div class="gallery">
+    {item.data.foto.map((f, i) => (
+      <figure>
+        <a href={f.immagine}><img src={f.immagine} alt={f.didascalia ?? `Foto ${i + 1} – ${item.data.title}`} loading="lazy" /></a>
+        {f.didascalia && <figcaption>{f.didascalia}</figcaption>}
+      </figure>
+    ))}
+  </div>
+</Base>
