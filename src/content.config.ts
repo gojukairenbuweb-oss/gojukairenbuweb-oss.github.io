@@ -57,7 +57,7 @@ const gallerie = defineCollection({
   }),
 });
 
-export const SEZIONI = ['Chi siamo', 'La Storia', 'I.K.G.A.', 'Altro'] as const;
+export const SEZIONI = ['Chi siamo', 'La Storia', 'I.K.G.A.', 'Gli atleti', 'Altro'] as const;
 
 const pagine = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/pagine' }),

@@ -94,7 +94,7 @@ collections:
           - Campionati Europei & Mondiali I.K.G.A.
           - Seminari I.K.G.A.
       - { name: date, label: Data, widget: datetime, time_format: false, required: false, hint: 'Lasciare vuoto per raccolte senza data precisa' }
-      - { name: periodo, label: Periodo (se non c'è una data), widget: string, required: false, hint: 'Es. 2005–2015' }
+      - { name: periodo, label: Periodo mostrato, widget: string, required: false, hint: "Facoltativo: se compilato (es. autunno 2015) viene mostrato al posto della data, che serve solo per ordinare" }
       - { name: luogo, label: Luogo, widget: string, required: false }
       - name: federazione
         label: Federazione
@@ -127,7 +127,7 @@ collections:
       - name: sezione
         label: Sezione del menu
         widget: select
-        options: [Chi siamo, La Storia, I.K.G.A., Altro]
+        options: [Chi siamo, La Storia, I.K.G.A., Gli atleti, Altro]
       - { name: order, label: Ordine nella sezione, widget: number, value_type: int, default: 99 }
       - { name: menu, label: Mostra nel menu, widget: boolean, default: true }
       - { name: cover, label: Immagine principale, widget: image, required: false }
