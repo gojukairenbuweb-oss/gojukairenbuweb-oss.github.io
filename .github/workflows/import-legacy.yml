@@ -1,0 +1,58 @@
+# Scarica dal vecchio sito gli asset elencati in legacy/assets.txt e li salva in legacy/raw/.
+# Parte da solo quando cambia legacy/assets.txt, oppure a mano da Actions → Run workflow.
+name: Import asset vecchio sito
+
+on:
+  push:
+    branches: [main]
+    paths: [legacy/assets.txt]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: import-legacy
+  cancel-in-progress: false
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download
+        env:
+          BASE: https://www.gojukaitaliarbk.com
+        run: |
+          set -u
+          ok=0; ko=0
+          fetch() {
+            local path="$1" dest="legacy/raw/$1"
+            mkdir -p "$(dirname "$dest")"
+            if curl -fsSL --retry 3 -A "gojuren-poc-import" -o "$dest" "$BASE/$path"; then
+              ok=$((ok+1)); echo "OK  $path"; return 0
+            else
+              rm -f "$dest"; return 1
+            fi
+          }
+          while IFS= read -r line; do
+            line="${line%%#*}"; line="$(echo "$line" | xargs)"
+            [ -z "$line" ] && continue
+            if [[ "$line" == slideshow:* ]]; then
+              prefix="${line#slideshow:}"; n=1
+              while fetch "${prefix}_${n}.jpg"; do n=$((n+1)); done
+              echo "Slideshow $prefix: $((n-1)) immagini"
+            else
+              fetch "$line" || { ko=$((ko+1)); echo "ERR $line"; }
+            fi
+          done < legacy/assets.txt
+          echo "Scaricati: $ok  –  Errori: $ko"
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add legacy/raw
+          if git diff --cached --quiet; then echo "Nessuna novità"; exit 0; fi
+          git commit -m "Import asset dal vecchio sito"
+          git push

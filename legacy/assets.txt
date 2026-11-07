@@ -1,0 +1,58 @@
+# Asset del vecchio sito da importare (percorsi relativi a https://www.gojukaitaliarbk.com/)
+# Righe "slideshow:<prefisso>" = scarica <prefisso>_1.jpg, _2.jpg, ... finché esistono.
+# Home / logo
+images/home_0_00_01.jpg
+images/logo_fik.jpg
+images/3masters650pixwide.jpg
+images/home_0_07_05.jpg
+images/home_0_07_04.jpg
+images/home_0_07_026.jpg
+# Chi siamo
+images/p020_0_00_01.jpg
+images/p020_0_00_02.jpg
+images/p020_1_00.jpg
+images/p020_1_01.jpg
+images/p020_1_04.jpg
+images/p020_1_05.jpg
+images/p020_1_06.jpg
+images/p020_1_07.jpg
+images/p020_1_09.jpg
+images/p020_1_10.jpg
+images/p020_1_11.jpg
+images/tigre_bianca.jpg
+# Dove siamo
+images/13.gif
+images/p001_1_01.png
+images/p001_1_02.png
+images/p001_1_03.png
+images/p001_1_04.png
+images/mapdata.gif
+# Il Maestro
+images/p021_0_00_01.jpg
+images/p021_0_00_02.jpg
+images/p021_1_00.jpg
+images/p021_1_01.png
+images/p021_1_02.jpg
+images/p021_1_03.jpg
+images/p021_1_04.jpg
+images/p021_1_06.jpg
+slideshow:slideshow/p021_0
+# I Corsi
+images/karate1.gif
+# La Storia
+images/p004_1_00.jpg
+images/p004_1_01.jpg
+images/p004_1_02.png
+images/p004_1_03.png
+images/p004_1_04.jpg
+# I Kata
+images/p005_1_00.png
+images/p005_1_02.jpg
+images/p005_1_03.png
+# I.K.G.A.
+images/p018_1_01.png
+images/p160_1_00.png
+images/p161_1_01.png
+images/p162_1_01.jpg
+files/programma_ikga.pdf
+files/grading_requirements_ikga_europe.pdf
