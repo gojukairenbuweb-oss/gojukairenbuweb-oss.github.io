@@ -30,7 +30,7 @@ const eventi = (await getCollection('eventi', isPublished))
     <Fragment slot="title">Karate <span class="text-primary">Goju Kai</span> a Roma</Fragment>
     <Fragment slot="subtitle">
       La scuola <strong>Ren Bu Kan</strong> dello Shihan-Renshi <strong>Luciano Masci</strong>, 6° Dan I.K.G.A. e responsabile
-      I.K.G.A. per l'Italia. Corsi per bambini e agonisti in zona San Paolo.
+      I.K.G.A. per l'Italia. Corsi per bambini e agonisti a Roma.
     </Fragment>
   </Hero>
 
@@ -52,10 +52,10 @@ const eventi = (await getCollection('eventi', isPublished))
     items={[
       { title: 'Bambini', description: 'Lunedì, mercoledì e venerdì, dalle 17.00 alle 18.00' },
       { title: 'Agonisti', description: 'Lunedì, mercoledì e venerdì, dalle 18.30 alle 20.00' },
-      { title: 'Dove', description: 'Via Antonino Pio 78, Roma (zona San Paolo)' },
+      { title: 'Dove', description: 'Via Cristoforo Colombo, 112 – Roma' },
     ]}
-    image={{ src: '/media/pagine/dove-siamo/dojo-1.webp', alt: 'Il dojo Ren Bu Kan', aspect: '4/3' }}
-    callToAction={{ text: 'Tutti i dettagli', href: '/corsi', variant: 'secondary' }}
+    image={{ src: '/media/pagine/dove-siamo/sala-1.webp', alt: 'La sala di allenamento', aspect: '4/3' }}
+    callToAction={{ text: 'Come arrivare', href: '/dove-siamo', variant: 'secondary' }}
   />
 
   {
