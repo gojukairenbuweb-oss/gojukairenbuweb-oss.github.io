@@ -41,6 +41,16 @@ const d = pagina.data;
     }
   </PageShell>
   {
+    d.album.map((a) => (
+      <Gallery
+        title={a.titolo}
+        columns={4}
+        images={a.foto.map((f, i) => ({ src: f.immagine, alt: f.didascalia ?? `${a.titolo} – ${i + 1}`, caption: f.didascalia }))}
+        classes={{ container: 'pt-0' }}
+      />
+    ))
+  }
+  {
     d.galleria.length > 0 && (
       <Gallery
         title="Galleria"

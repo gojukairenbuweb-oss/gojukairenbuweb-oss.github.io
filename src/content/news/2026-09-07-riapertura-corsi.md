@@ -1,7 +1,7 @@
 ---
 title: Riapertura corsi 2026/27
 date: 2026-09-07
-summary: Da lunedì riprendono i corsi per bambini e agonisti.
+summary: Da lunedì riprendono il corso base e il corso avanzato.
 draft: false
 ---
 Da **lunedì 14 settembre** riprendono i corsi della stagione 2026/27 nella sede di Via Cristoforo Colombo, 112.

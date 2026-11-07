@@ -16,6 +16,7 @@ import type { AstroIntegration } from 'astro';
 import astrowind from './vendor/integration';
 
 import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin } from './src/utils/frontmatter';
+import rehypeExternalLinks from 'rehype-external-links';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -121,7 +122,11 @@ export default defineConfig({
   markdown: {
     processor: unified({
       remarkPlugins: [readingTimeRemarkPlugin],
-      rehypePlugins: [responsiveTablesRehypePlugin],
+      rehypePlugins: [
+        responsiveTablesRehypePlugin,
+        // i link esterni scritti nei testi si aprono in una nuova scheda
+        [rehypeExternalLinks, { target: '_blank', rel: ['noopener', 'noreferrer'] }],
+      ],
     }),
     shikiConfig: {
       // Code blocks follow the site theme; see the `.astro-code` rules in tailwind.css.

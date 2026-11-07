@@ -5,6 +5,29 @@ order: 3
 menu: true
 cover: /media/pagine/il-maestro/ritratto.webp
 cover_alt: Il Maestro Luciano Masci
+album:
+  - titolo: Diplomi
+    foto:
+      - immagine: /media/pagine/il-maestro/diploma-01.webp
+        didascalia: "Karatedo Gojukai – Renshi, Rokudan (6° Dan)"
+      - immagine: /media/pagine/il-maestro/diploma-02.webp
+        didascalia: "Certificato di 6° Dan (Roku Dan) I.K.G.A."
+      - immagine: /media/pagine/il-maestro/diploma-03.webp
+        didascalia: "Attestato di qualifica tecnica di Maestro di Karate"
+      - immagine: /media/pagine/il-maestro/diploma-04.webp
+        didascalia: "Maor Self Defense Center – Krav Maga Roma"
+      - immagine: /media/pagine/il-maestro/diploma-05.webp
+        didascalia: "Diploma di istruttore di 2° livello KMM self defense – Maor"
+      - immagine: /media/pagine/il-maestro/diploma-06.webp
+        didascalia: "Goju-Kai – Renshi, Godan (5° Dan)"
+      - immagine: /media/pagine/il-maestro/diploma-07.webp
+        didascalia: "Certificato di Giudice Continentale"
+      - immagine: /media/pagine/il-maestro/diploma-08.webp
+        didascalia: "Diploma FIK di 7° Dan"
+      - immagine: /media/pagine/il-maestro/diploma-09.webp
+        didascalia: "Consegna del diploma"
+      - immagine: /media/pagine/il-maestro/diploma-10.webp
+        didascalia: "Il Maestro come ufficiale di gara con le atlete"
 galleria:
   - immagine: /media/pagine/il-maestro/con-yamaguchi-goshi.webp
     didascalia: Con Saiko Shihan Yamaguchi Goshi
@@ -20,6 +43,10 @@ galleria:
 ## Il Maestro Luciano Masci
 
 ![Il Maestro Luciano Masci in kata](/media/pagine/il-maestro/kata.webp)
+
+**SHIHAN-RENSHI Luciano Masci** – 6° Dan karate Goju-Kai I.K.G.A.
+
+**7° Dan Docente Federale e Arbitro Internazionale** (Federazione Italiana Karate)
 
 Nato a Roma nel 1954
 

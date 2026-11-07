@@ -3,7 +3,7 @@ import { getCollection, render } from 'astro:content';
 import PageLayout from '~/layouts/PageLayout.astro';
 import PageShell from '~/components/site/PageShell.astro';
 import Prose from '~/components/site/Prose.astro';
-import { formatDate, isPublished } from '~/lib/format';
+import { formatRange, isPublished } from '~/lib/format';
 export async function getStaticPaths() {
   return (await getCollection('eventi', isPublished)).map((e) => ({ params: { slug: e.id }, props: { item: e } }));
 }
@@ -12,7 +12,7 @@ const { Content } = await render(item);
 const d = item.data;
 ---
 <PageLayout metadata={{ title: d.title }}>
-  <PageShell title={d.title} kicker={`${d.tipo} · ${formatDate(d.date)}${d.luogo ? ` · ${d.luogo}` : ''}`}>
+  <PageShell title={d.title} kicker={`${d.tipo} · ${formatRange(d.date, d.data_fine)}${d.luogo ? ` · ${d.luogo}` : ''}`}>
     <Prose><Content /></Prose>
     <p class="mt-10"><a href="/eventi" class="text-primary font-semibold">← Tutti gli eventi</a></p>
   </PageShell>

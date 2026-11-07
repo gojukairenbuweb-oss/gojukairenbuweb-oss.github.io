@@ -1,16 +1,16 @@
 ---
 title: I Corsi
 sezione: Chi siamo
-order: 4
+order: 5
 menu: true
 ---
 I corsi del Maestro:
 
-**Giorni:** Lunedì - Mercoledì - Venerdì (Facoltativi)
+**Giorni:** Lunedì – Mercoledì – Venerdì
 
 | Corso | Orario |
 | --- | --- |
-| Bambini | dalle 17.00 alle 18.00 |
-| Agonisti | dalle 18.30 alle 20.00 |
+| Corso Base | 17:00 – 18:00 |
+| Corso Avanzato | 18:00 – 19:15 |
 
 **Sede:** Via Cristoforo Colombo, 112 – Roma – [vedi Dove siamo](/dove-siamo/)

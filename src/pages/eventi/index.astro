@@ -2,11 +2,11 @@
 import { getCollection } from 'astro:content';
 import PageLayout from '~/layouts/PageLayout.astro';
 import PageShell from '~/components/site/PageShell.astro';
-import { formatDate, isPublished, byDateDesc } from '~/lib/format';
+import { formatRange, eventoFuturo, isPublished, byDateDesc } from '~/lib/format';
 const oggi = new Date(new Date().toDateString());
 const tutti = await getCollection('eventi', isPublished);
-const futuri = tutti.filter((e) => e.data.date >= oggi).sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
-const passati = tutti.filter((e) => e.data.date < oggi).sort(byDateDesc);
+const futuri = tutti.filter((e) => eventoFuturo(e, oggi)).sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
+const passati = tutti.filter((e) => !eventoFuturo(e, oggi)).sort(byDateDesc);
 const gruppi = [{ titolo: 'In programma', lista: futuri }, { titolo: 'Archivio', lista: passati }];
 ---
 <PageLayout metadata={{ title: 'Eventi' }}>
@@ -18,7 +18,7 @@ const gruppi = [{ titolo: 'In programma', lista: futuri }, { titolo: 'Archivio',
           <ul class="divide-y divide-black/10 rounded-xl bg-white ring-1 ring-black/5">
             {g.lista.map((e) => (
               <li class="p-4 flex flex-wrap gap-x-4 gap-y-1 items-baseline">
-                <span class="font-semibold text-primary tabular-nums">{formatDate(e.data.date)}</span>
+                <span class="font-semibold text-primary tabular-nums">{formatRange(e.data.date, e.data.data_fine)}</span>
                 <a href={`/eventi/${e.id}`} class="font-semibold hover:text-primary">{e.data.title}</a>
                 <span class="text-muted">{[e.data.luogo, e.data.tipo].filter(Boolean).join(' · ')}</span>
               </li>

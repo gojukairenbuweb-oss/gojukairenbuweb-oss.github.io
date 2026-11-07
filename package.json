@@ -18,6 +18,7 @@
     "astro-seo": "^1.2.0",
     "limax": "4.2.3",
     "lodash.merge": "^4.6.2",
+    "rehype-external-links": "^3.0.0",
     "unpic": "^4.2.2"
   },
   "engines": {

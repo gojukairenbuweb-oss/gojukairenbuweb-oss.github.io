@@ -18,6 +18,12 @@ backend:
 locale: it
 logo_url: /admin/logo.png
 
+# indirizzi delle pagine solo con lettere semplici (niente ° o accenti)
+slug:
+  encoding: ascii
+  clean_accents: true
+  sanitize_replacement: '-'
+
 media_folder: public/media
 public_folder: /media
 
@@ -59,7 +65,8 @@ collections:
     summary: '{{title}} – {{date}}'
     fields:
       - { name: title, label: Titolo, widget: string }
-      - { name: date, label: Data dell'evento, widget: datetime, time_format: false }
+      - { name: date, label: Data di inizio, widget: datetime, time_format: false }
+      - { name: data_fine, label: Data di fine (se dura più giorni), widget: datetime, time_format: false, required: false }
       - { name: luogo, label: Luogo, widget: string, required: false }
       - name: tipo
         label: Tipo
@@ -141,6 +148,21 @@ collections:
         fields:
           - { name: immagine, label: Immagine, widget: image }
           - { name: didascalia, label: Didascalia, widget: string, required: false }
+      - name: album
+        label: Album fotografici aggiuntivi
+        label_singular: Album
+        widget: list
+        required: false
+        hint: 'Es. "Diplomi": ogni album ha un titolo e le sue foto'
+        fields:
+          - { name: titolo, label: Titolo dell'album, widget: string }
+          - name: foto
+            label: Foto
+            label_singular: Foto
+            widget: list
+            fields:
+              - { name: immagine, label: Immagine, widget: image }
+              - { name: didascalia, label: Didascalia, widget: string, required: false }
       - name: allegati
         label: Documenti allegati
         label_singular: Documento
