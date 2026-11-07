@@ -8,10 +8,10 @@ export type Galleria = CollectionEntry<'gallerie'>;
 export const perData = (a: Galleria, b: Galleria) =>
   (b.data.date?.valueOf() ?? -Infinity) - (a.data.date?.valueOf() ?? -Infinity);
 
+// Se è indicato un periodo (es. "autunno 2015") si mostra quello; la data serve solo per ordinare
 export const quando = (g: Galleria) =>
-  g.data.date
-    ? g.data.date.toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' })
-    : (g.data.periodo ?? '');
+  g.data.periodo ||
+  (g.data.date ? g.data.date.toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' }) : '');
 
 export async function gallerieOrdinate() {
   return (await getCollection('gallerie', isPublished)).sort(perData);

@@ -14,8 +14,13 @@ export async function getHeaderData() {
     links: [
       { text: 'Home', href: '/' },
       ...sezioni,
-      { text: 'News', href: '/news' },
-      { text: 'Eventi', href: '/eventi' },
+      {
+        text: 'Notizie',
+        links: [
+          { text: 'News', href: '/news' },
+          { text: 'Eventi', href: '/eventi' },
+        ],
+      },
       {
         text: 'Foto Gallery',
         links: [
