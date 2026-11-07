@@ -58,7 +58,7 @@ files/programma_ikga.pdf
 files/grading_requirements_ikga_europe.pdf
 # Gallerie (pagina + tutte le foto dello slideshow)
 page:belgio2022.html
-page:tata_ungheria_2019.html
+page:tata_ungheria_2019.html  # imagebrowser
 # Pagine indice delle categorie gallerie (per l'elenco completo)
 page:gare_regionali.html
 page:gare_nazionali.html

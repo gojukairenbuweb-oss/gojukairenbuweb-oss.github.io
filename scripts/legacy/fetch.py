@@ -1,6 +1,7 @@
 """Scarica dal vecchio sito gli asset elencati in legacy/assets.txt (eseguito da GitHub Actions).
 Righe supportate:
   images/xxx.jpg            -> file singolo
+  (le pagine galleria possono usare slideshow/ oppure imagebrowser/)
   slideshow:slideshow/pNNN_0 -> pNNN_0_1.jpg, _2.jpg, ... finché esistono
   page:nome_pagina.html     -> scarica la pagina e tutte le immagini images/ e slideshow/ che contiene
                                (+ sequenze slideshow complete); salva l'elenco in legacy/raw/pages/<nome>.txt
@@ -53,6 +54,8 @@ for line in Path('legacy/assets.txt').read_text().splitlines():
         (RAW / 'pages').mkdir(parents=True, exist_ok=True)
         (RAW / 'pages' / page).write_text(text, encoding='utf-8')
         refs = sorted(set(re.findall(r'(?:images|slideshow)/[A-Za-z0-9_\-]+\.(?:jpg|jpeg|png|gif)', text, re.I)))
+        # componente "image browser" di X5: ib_*.jpg = foto grande (le .png sono miniature, si ignorano)
+        refs += sorted(set(re.findall(r'imagebrowser/ib_[A-Za-z0-9_\-]+\.jpg', text, re.I)))
         files = []
         for ref in refs:
             if fetch(ref): files.append(ref)
