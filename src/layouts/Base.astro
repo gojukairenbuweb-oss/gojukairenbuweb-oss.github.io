@@ -7,7 +7,7 @@ interface Props {
   title: string;
   description?: string;
 }
-const { title, description = 'A.S.D. Renbukan – Karate Goju Kai, Roma' } = Astro.props;
+const { title, description = 'Gojukai Italia Renbukan – Karate Goju Ryu, Roma' } = Astro.props;
 
 const pagine = (await getCollection('pagine', (p) => p.data.menu)).sort(
   (a, b) => a.data.order - b.data.order,
@@ -33,13 +33,13 @@ const year = new Date().getFullYear();
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <title>{title} | A.S.D. Renbukan Goju Kai Roma</title>
+    <title>{title} | Gojukai Italia Renbukan</title>
   </head>
   <body>
     <header class="site-header">
       <a class="brand" href="/">
         <img src="/media/pagine/chi-siamo/stemma.webp" alt="" width="44" height="46" />
-        <span>A.S.D. Renbukan <small>Goju Kai Roma</small></span>
+        <span>Gojukai Italia Renbukan <small>Goju Ryu Karate Do · Roma</small></span>
       </a>
       <nav aria-label="Menu principale">
         <ul class="menu">
@@ -67,7 +67,7 @@ const year = new Date().getFullYear();
       <slot />
     </main>
     <footer class="site-footer">
-      <p>A.S.D. Renbukan – Via Cristoforo Colombo, 112 – Roma</p>
+      <p>Gojukai Italia Renbukan · A.S.D. Renbukan – Via Cristoforo Colombo, 112 – Roma</p>
       <p>© {year} · Sito di prova (PoC) – contenuti non definitivi</p>
     </footer>
   </body>
