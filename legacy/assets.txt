@@ -81,7 +81,7 @@ files/2011-2012.pdf
 page:altri_siti.html
 # Gallerie collegate dalla pagina atleti
 page:2_iku_world_championschip_2015_maribor_slovenia.html
-page:coppa_autunno_fik_2015.html
+page:coppa_autunno_fik_2015.html  # imagebrowser senza foto grandi in HTML
 page:trofeo_lazio_fik_2016.html
 page:sardegna_2016.html
 page:6_camp_ital_e_coppa_italia_fik_2013_terni.html

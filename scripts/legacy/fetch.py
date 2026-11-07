@@ -61,6 +61,10 @@ for line in Path('legacy/assets.txt').read_text().splitlines():
             if fetch(ref): files.append(ref)
         for prefix in sorted({m for m in re.findall(r'(slideshow/[A-Za-z0-9]+_\d+)_\d+\.jpg', text)}):
             files += [f for f in series(prefix) if f not in files]
+        # image browser con sole miniature nell'HTML: le foto grandi (ib_*.jpg) si cercano per numero
+        if not any(f.startswith('imagebrowser/ib_') for f in files):
+            for prefix in sorted(set(re.findall(r'imagebrowser/(p[0-9]+_\d+)_\d+\.png', text))):
+                files += [f for f in series(f'imagebrowser/ib_{prefix}') if f not in files]
         (RAW / 'pages' / (page + '.txt')).write_text('\n'.join(files) + '\n')
         print(f'Pagina {page}: {len(files)} immagini')
     else:
