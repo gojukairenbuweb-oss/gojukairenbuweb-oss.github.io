@@ -1,11 +1,19 @@
-# Build e pubblicazione su GitHub Pages (PoC): nessun server da gestire.
-# Prerequisito una tantum: Settings → Pages → Source: "GitHub Actions".
+# Build e pubblicazione su GitHub Pages.
+# Quale versione del sito pubblicare lo decide il file .github/ramo-pubblicato (su main):
+#   main            → sito attuale
+#   tema-astrowind  → prova grafica AstroWind (con i contenuti aggiornati di main)
+# Per tornare indietro: scrivere "main" nel file e salvare (oppure Actions → Run workflow → ramo: main).
 name: Deploy GitHub Pages
 
 on:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      ramo:
+        description: 'Ramo da pubblicare (vuoto = quello indicato in .github/ramo-pubblicato)'
+        required: false
+        default: ''
 
 permissions:
   contents: read
@@ -19,18 +27,55 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout main (contenuti)
+        uses: actions/checkout@v4
+        with:
+          path: main
+
+      - name: Scelta del ramo
+        id: ramo
+        run: |
+          RAMO="${{ inputs.ramo }}"
+          [ -z "$RAMO" ] && [ -f main/.github/ramo-pubblicato ] && RAMO="$(tr -d '[:space:]' < main/.github/ramo-pubblicato)"
+          [ -z "$RAMO" ] && RAMO=main
+          echo "ramo=$RAMO" >> "$GITHUB_OUTPUT"
+          echo "### Ramo pubblicato: \`$RAMO\`" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Checkout ramo grafico
+        if: steps.ramo.outputs.ramo != 'main'
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.ramo.outputs.ramo }}
+          path: site
+
+      - name: Contenuti di main sul ramo grafico
+        if: steps.ramo.outputs.ramo != 'main'
+        run: |
+          # le modifiche fatte con Sveltia (su main) compaiono anche nell'anteprima
+          rsync -a --delete main/src/content/ site/src/content/
+          rsync -a main/public/media/ site/public/media/
+
+      - name: Cartella di build
+        id: dir
+        run: echo "dir=${{ steps.ramo.outputs.ramo == 'main' && 'main' || 'site' }}" >> "$GITHUB_OUTPUT"
+
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
-      - run: npm ci
-      - run: npm run build
+          cache-dependency-path: ${{ steps.dir.outputs.dir }}/package-lock.json
+
+      - name: Install & build
+        working-directory: ${{ steps.dir.outputs.dir }}
+        run: |
+          npm ci
+          npm run build
+
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: ${{ steps.dir.outputs.dir }}/dist
 
   deploy:
     needs: build
