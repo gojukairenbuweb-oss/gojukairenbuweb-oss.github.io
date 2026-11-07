@@ -1,7 +1,7 @@
 ---
-title: Seminario IKGA Herentals
+title: 5° Trofeo "Tutti pazzi per il Karate"
 date: 2026-11-29
-luogo: 5° Trofeo "Tutti pazzi per il Karate"
+luogo: Palazzetto dello Sport di Frascati - Viale Luigi Einaudi 7, Località Vermicino - Comune di Frascati RM
 tipo: Gara
 draft: false
 ---
