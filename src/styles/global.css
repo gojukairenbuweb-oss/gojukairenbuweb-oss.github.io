@@ -75,3 +75,9 @@ main { max-width: 64rem; margin: 0 auto; padding: 2rem clamp(1rem, 4vw, 3rem); }
 
 .filters { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0; }
 .filters a { border: 1px solid var(--line); border-radius: 999px; padding: 0.2rem 0.8rem; text-decoration: none; background: #fff; }
+
+/* Categorie gallerie */
+.card-empty { aspect-ratio: 4 / 3; background: repeating-linear-gradient(45deg, #f0efe9, #f0efe9 10px, #e9e7df 10px, #e9e7df 20px); }
+.gallery figure a { display: block; }
+/* ultima voce del menu: sottomenu allineato a destra per non uscire dallo schermo */
+@media (min-width: 701px) { .menu > li:last-child .sub { left: auto; right: -0.75rem; } }

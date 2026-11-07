@@ -1,0 +1,15 @@
+---
+import type { Galleria } from '../lib/gallerie';
+import { quando } from '../lib/gallerie';
+interface Props { g: Galleria }
+const { g } = Astro.props;
+---
+<li class="card">
+  <a href={`/gallerie/${g.id}/`}>
+    {g.data.foto[0] && <img src={g.data.foto[0].immagine} alt="" loading="lazy" />}
+    <div class="body">
+      <strong>{g.data.title}</strong>
+      <div class="meta">{quando(g)}{g.data.luogo && ` · ${g.data.luogo}`} · {g.data.foto.length} foto</div>
+    </div>
+  </a>
+</li>

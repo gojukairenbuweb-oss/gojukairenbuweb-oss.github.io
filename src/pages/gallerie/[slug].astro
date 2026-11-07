@@ -1,25 +1,28 @@
 ---
-import { getCollection, render } from 'astro:content';
+import { render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
-import { formatDate, isPublished } from '../../lib/format';
+import { gallerieOrdinate, quando, slugCategoria } from '../../lib/gallerie';
 
 export async function getStaticPaths() {
-  const gallerie = await getCollection('gallerie', isPublished);
+  const gallerie = await gallerieOrdinate();
   return gallerie.map((g) => ({ params: { slug: g.id }, props: { item: g } }));
 }
 const { item } = Astro.props;
 const { Content } = await render(item);
+const d = item.data;
 ---
 
-<Base title={item.data.title}>
-  <p class="meta"><a href="/gallerie/">← Gallerie</a></p>
-  <h1>{item.data.title}</h1>
-  <p class="meta">{item.data.tipo} · {item.data.federazione} · {formatDate(item.data.date)}{item.data.luogo && ` · ${item.data.luogo}`}</p>
-  <Content />
+<Base title={d.title}>
+  <p class="meta">
+    <a href="/gallerie/">Foto Gallery</a> › <a href={`/gallerie/categoria/${slugCategoria(d.categoria)}/`}>{d.categoria}</a>
+  </p>
+  <h1>{d.title}</h1>
+  <p class="meta">{quando(item)}{d.luogo && ` · ${d.luogo}`} · {d.foto.length} foto</p>
+  <div class="prose"><Content /></div>
   <div class="gallery">
-    {item.data.foto.map((f, i) => (
+    {d.foto.map((f, i) => (
       <figure>
-        <a href={f.immagine}><img src={f.immagine} alt={f.didascalia ?? `Foto ${i + 1} – ${item.data.title}`} loading="lazy" /></a>
+        <a href={f.immagine}><img src={f.immagine} alt={f.didascalia ?? `${d.title} – foto ${i + 1}`} loading="lazy" /></a>
         {f.didascalia && <figcaption>{f.didascalia}</figcaption>}
       </figure>
     ))}

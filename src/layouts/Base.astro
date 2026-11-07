@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import { SEZIONI } from '../content.config';
+import { SEZIONI, CATEGORIE_GALLERIE } from '../content.config';
 import '../styles/global.css';
 
 interface Props {
@@ -54,7 +54,12 @@ const year = new Date().getFullYear();
           ))}
           <li><a href="/news/" class={path.startsWith('/news') ? 'active' : ''}>News</a></li>
           <li><a href="/eventi/" class={path.startsWith('/eventi') ? 'active' : ''}>Eventi</a></li>
-          <li><a href="/gallerie/" class={path.startsWith('/gallerie') ? 'active' : ''}>Gallerie</a></li>
+          <li class="has-sub">
+            <a href="/gallerie/" aria-haspopup="true" class={path.startsWith('/gallerie') ? 'active' : ''}>Foto Gallery</a>
+            <ul class="sub">
+              {CATEGORIE_GALLERIE.map((c) => <li><a href={`/gallerie/categoria/${c.slug}/`}>{c.nome}</a></li>)}
+            </ul>
+          </li>
         </ul>
       </nav>
     </header>

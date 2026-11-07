@@ -25,20 +25,25 @@ const eventi = defineCollection({
   }),
 });
 
+// Categorie come nel vecchio sito (menu "Foto Gallery")
+export const CATEGORIE_GALLERIE = [
+  { nome: 'Foto di gruppo', slug: 'foto-di-gruppo' },
+  { nome: 'Gare regionali', slug: 'gare-regionali' },
+  { nome: 'Gare nazionali', slug: 'gare-nazionali' },
+  { nome: 'Gare internazionali', slug: 'gare-internazionali' },
+  { nome: 'Campionati Europei & Mondiali I.K.G.A.', slug: 'europei-mondiali-ikga' },
+  { nome: 'Seminari I.K.G.A.', slug: 'seminari-ikga' },
+] as const;
+const nomiCategorie = CATEGORIE_GALLERIE.map((c) => c.nome) as [string, ...string[]];
+
 const gallerie = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/gallerie' }),
   schema: z.object({
     title: z.string(),
-    date: z.coerce.date(),
+    date: z.coerce.date().optional(),
+    periodo: z.string().optional(),
     luogo: z.string().optional(),
-    tipo: z.enum([
-      'Gara regionale',
-      'Gara nazionale',
-      'Gara internazionale',
-      'Europei/Mondiali IKGA',
-      'Seminario',
-      'Foto di gruppo',
-    ]),
+    categoria: z.enum(nomiCategorie),
     federazione: z.enum(['FIK', 'IKGA', 'Altro']).default('Altro'),
     draft: z.boolean().default(false),
     foto: z

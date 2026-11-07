@@ -1,0 +1,38 @@
+---
+import Base from '../../../layouts/Base.astro';
+import GalleryCard from '../../../components/GalleryCard.astro';
+import { CATEGORIE_GALLERIE } from '../../../content.config';
+import { categorieConGallerie } from '../../../lib/gallerie';
+
+export async function getStaticPaths() {
+  const categorie = await categorieConGallerie();
+  return categorie.map((c) => ({ params: { categoria: c.slug }, props: { cat: c } }));
+}
+const { cat } = Astro.props;
+const anni = [...new Set(cat.gallerie.map((g) => g.data.date?.getFullYear() ?? 'Senza data'))];
+---
+
+<Base title={cat.nome}>
+  <div class="page-layout">
+    <aside class="section-nav" aria-label="Categorie">
+      <p class="section-title">Foto Gallery</p>
+      <ul>
+        {CATEGORIE_GALLERIE.map((c) => (
+          <li><a href={`/gallerie/categoria/${c.slug}/`} aria-current={c.slug === cat.slug ? 'page' : undefined}>{c.nome}</a></li>
+        ))}
+      </ul>
+    </aside>
+    <section>
+      <h1>{cat.nome}</h1>
+      {cat.gallerie.length === 0 && <p class="meta">Le gallerie di questa categoria saranno migrate a breve dal vecchio sito.</p>}
+      {anni.map((anno) => (
+        <section>
+          {anni.length > 1 && <h2>{anno}</h2>}
+          <ul class="cards">
+            {cat.gallerie.filter((g) => (g.data.date?.getFullYear() ?? 'Senza data') === anno).map((g) => <GalleryCard g={g} />)}
+          </ul>
+        </section>
+      ))}
+    </section>
+  </div>
+</Base>

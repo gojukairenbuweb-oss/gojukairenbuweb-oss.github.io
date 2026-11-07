@@ -75,23 +75,27 @@ collections:
     folder: src/content/gallerie
     create: true
     slug: '{{year}}-{{slug}}'
-    summary: '{{title}} ({{tipo}})'
+    summary: '{{title}} – {{categoria}}'
+    sortable_fields: [date, title, categoria]
+    view_groups:
+      - { label: Categoria, field: categoria }
     media_folder: '/public/media/gallerie/{{slug}}'
     public_folder: '/media/gallerie/{{slug}}'
     fields:
       - { name: title, label: Titolo, widget: string }
-      - { name: date, label: Data, widget: datetime, time_format: false }
-      - { name: luogo, label: Luogo, widget: string, required: false }
-      - name: tipo
-        label: Tipo
+      - name: categoria
+        label: Categoria
         widget: select
         options:
-          - Gara regionale
-          - Gara nazionale
-          - Gara internazionale
-          - Europei/Mondiali IKGA
-          - Seminario
           - Foto di gruppo
+          - Gare regionali
+          - Gare nazionali
+          - Gare internazionali
+          - Campionati Europei & Mondiali I.K.G.A.
+          - Seminari I.K.G.A.
+      - { name: date, label: Data, widget: datetime, time_format: false, required: false, hint: 'Lasciare vuoto per raccolte senza data precisa' }
+      - { name: periodo, label: Periodo (se non c'è una data), widget: string, required: false, hint: 'Es. 2005–2015' }
+      - { name: luogo, label: Luogo, widget: string, required: false }
       - name: federazione
         label: Federazione
         widget: select

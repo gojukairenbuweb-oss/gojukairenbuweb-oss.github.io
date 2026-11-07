@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import { formatDate, isPublished, byDateDesc } from '../lib/format';
+import { gallerieOrdinate, quando } from '../lib/gallerie';
 
 const news = (await getCollection('news', isPublished)).sort(byDateDesc).slice(0, 3);
 const oggi = new Date(new Date().toDateString());
@@ -9,7 +10,7 @@ const eventi = (await getCollection('eventi', isPublished))
   .filter((e) => e.data.date >= oggi)
   .sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf())
   .slice(0, 3);
-const gallerie = (await getCollection('gallerie', isPublished)).sort(byDateDesc).slice(0, 3);
+const gallerie = (await gallerieOrdinate()).slice(0, 3);
 ---
 
 <Base title="Home">
@@ -41,7 +42,7 @@ const gallerie = (await getCollection('gallerie', isPublished)).sort(byDateDesc)
     {gallerie.map((g) => (
       <li class="card"><a href={`/gallerie/${g.id}/`}>
         {g.data.foto[0] && <img src={g.data.foto[0].immagine} alt="" loading="lazy" />}
-        <div class="body"><strong>{g.data.title}</strong><div class="meta">{g.data.tipo} · {formatDate(g.data.date)}</div></div>
+        <div class="body"><strong>{g.data.title}</strong><div class="meta">{g.data.categoria} · {quando(g)}</div></div>
       </a></li>
     ))}
   </ul>
