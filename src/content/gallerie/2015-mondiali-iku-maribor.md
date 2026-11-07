@@ -76,4 +76,4 @@ foto:
   - immagine: /media/gallerie/2015-mondiali-iku-maribor/67.webp
   - immagine: /media/gallerie/2015-mondiali-iku-maribor/68.webp
 ---
-2° World Championship IKU – Maribor.
+2° Campionato del Mondo IKU – Maribor (Slovenia), 2015.

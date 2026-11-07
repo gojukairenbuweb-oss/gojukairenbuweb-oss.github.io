@@ -50,27 +50,25 @@ galleria:
 
 Nato a Roma nel 1954
 
-Campione Italiano Marina Militare 1975 Pugilato Pesi Medi
+Campione italiano della Marina Militare di pugilato, pesi medi (1975)
 
 ![Il Maestro Masci campione di pugilato, 1975](/media/pagine/il-maestro/pugilato-1975.webp)
 
-2° Dan di Judo, più volte Campione Italiano
+2° Dan di judo, più volte campione italiano.
 
-- 1980 approda nel karate Goju con il Maestro Barbin G. poi con il maestro Nomachi T.
-- ma sempre sotto la direzione del "Saiko-Shihan Yamaguchi Goshi"
-- e il responsabile del blocco Europeo "Hanshi" Ingo de Jong che nel 2009 gli conferisce insieme ad altri due maestri di Goju la responsabilità della I.K.G.A Italiana.
+Nel 1980 approda al karate Goju, prima con il Maestro G. Barbin e poi con il Maestro T. Nomachi, sempre sotto la guida del Saiko Shihan Yamaguchi Goshi e del responsabile per l'Europa, Hanshi Ingo de Jong, che nel 2009 gli affida, insieme ad altri due maestri di Goju, la responsabilità della I.K.G.A. italiana.
 
 ## Atleta
 
-- Atleta Agonista: due volte Campione Italiano
-- 3° posto Kumite a squadre Campionati Europei IKGA a Kaposvar (Ungheria)
+- Atleta agonista: due volte campione italiano
+- 3° posto Kumite a squadre Campionati Europei IKGA a Kaposvár (Ungheria)
 
 ## Atleta Over
 
-- 6 Titoli Italiani
-- 2° cl. Campionato del Mondo x Club US.ACLI (Jesolo 2004)
-- 1° cl. Kata e 2° cl. kata Superchampion Campionato del Mondo x Club US.ACLI (Vasto 2005)
-- 3° posto Campionato del Mondo Goju-Ruy WKGF (Marsciano 2006)
+- 6 titoli italiani
+- 2° cl. Campionato del Mondo per club US ACLI (Jesolo 2004)
+- 1° cl. Kata e 2° cl. kata Superchampion Campionato del Mondo per club US ACLI (Vasto 2005)
+- 3° posto Campionato del Mondo Goju-Ryu WKGF (Marsciano 2006)
 - 2° cl. Campionato del Mondo Kata squadra (Rotterdam) IKGA 2005
 - 2° cl. Campionato Europeo Kata - 3° cl. Kumite - 3° cl. Kata squadra (Berna) IKGA 2007
 - 1° cl. Campionato Europeo (St. Pölten - Austria) WUKO 2006
@@ -78,19 +76,19 @@ Campione Italiano Marina Militare 1975 Pugilato Pesi Medi
 - 1° cl. Campionato del Mondo (Cape Town) IKGA 2009
 - 1° cl. Kata Campionato Europeo Tatabánya (Ungheria) IKGA 2011
 - 3° cl. Kumite Campionato Europeo Tatabánya (Ungheria) IKGA 2011
-- 2° cl. Kumite Campionato Europeo Hopton on Sea (England) IKGA 2015
-- 2° cl. Kata Campionato Europeo Hopton on Sea (England) IKGA 2015
+- 2° cl. Kumite Campionato Europeo Hopton on Sea (Inghilterra) IKGA 2015
+- 2° cl. Kata Campionato Europeo Hopton on Sea (Inghilterra) IKGA 2015
 - 1° cl. Kata Campionato Europeo Tatabánya (Ungheria) IKGA 2019
 
 ## Qualifiche
 
 - 4° Dan (Jokyo) IKGA Gojukai di Shihan Yamaguchi Goshi (Rio Maior - Portogallo 2009)
-- 5° Dan (Jokyo) IKGA Gojukai di Shihan Yamaguchi Goshi (Karlsruhe - Germany 2014)
-- 5° Dan SHIHAN I.K.G.A (Quartu Sant'Elena - Sardegna 2016)
-- 6° Dan SHIHAN I.K.G.A (Tatabánya, Ungheria 2021)
+- 5° Dan (Jokyo) IKGA Gojukai di Shihan Yamaguchi Goshi (Karlsruhe - Germania 2014)
+- 5° Dan SHIHAN I.K.G.A. (Quartu Sant'Elena - Sardegna 2016)
+- 6° Dan SHIHAN I.K.G.A. (Tatabánya, Ungheria 2021)
 - 7° Dan FIK Docente - Responsabile di stile Goju
-- membro Commissione Nazionale Ufficiali di Gara FIK
-- Arbitro internazionale WKC-WUKO-IKGA
+- Membro della Commissione Nazionale Ufficiali di Gara FIK
+- Arbitro Internazionale WKC-WUKO-IKGA
 - Arbitro Internazionale IKU-FIK
 - Trainer e Specialist Difesa Personale (Krav Maga)
 - Istruttore (Krav Maga metodo Maor Amnor)

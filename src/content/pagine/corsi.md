@@ -4,9 +4,9 @@ sezione: Chi siamo
 order: 5
 menu: true
 ---
-I corsi del Maestro:
+I corsi tenuti dal Maestro Luciano Masci.
 
-**Giorni:** Lunedì – Mercoledì – Venerdì
+**Giorni:** lunedì, mercoledì e venerdì
 
 | Corso | Orario |
 | --- | --- |
@@ -14,3 +14,5 @@ I corsi del Maestro:
 | Corso Avanzato | 18:00 – 19:15 |
 
 **Sede:** Via Cristoforo Colombo, 112 – Roma – [vedi Dove siamo](/dove-siamo/)
+
+[Prenota una prova gratuita](https://www.overloadgym.it/fitness/karate/#wpcf7-f24954-p24955-o1)
