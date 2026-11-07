@@ -56,3 +56,13 @@ images/p161_1_01.png
 images/p162_1_01.jpg
 files/programma_ikga.pdf
 files/grading_requirements_ikga_europe.pdf
+# Gallerie (pagina + tutte le foto dello slideshow)
+page:belgio2022.html
+page:tata_ungheria_2019.html
+# Pagine indice delle categorie gallerie (per l'elenco completo)
+page:gare_regionali.html
+page:gare_nazionali.html
+page:gare_internazionali.html
+page:campionati_europei__mondiali_ikga.html
+page:seminari_ikga.html
+page:foto_gruppi.html

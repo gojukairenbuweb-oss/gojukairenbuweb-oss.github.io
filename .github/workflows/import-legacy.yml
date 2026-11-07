@@ -22,32 +22,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Download
-        env:
-          BASE: https://www.gojukaitaliarbk.com
-        run: |
-          set -u
-          ok=0; ko=0
-          fetch() {
-            local path="$1" dest="legacy/raw/$1"
-            mkdir -p "$(dirname "$dest")"
-            if curl -fsSL --retry 3 -A "gojuren-poc-import" -o "$dest" "$BASE/$path"; then
-              ok=$((ok+1)); echo "OK  $path"; return 0
-            else
-              rm -f "$dest"; return 1
-            fi
-          }
-          while IFS= read -r line; do
-            line="${line%%#*}"; line="$(echo "$line" | xargs)"
-            [ -z "$line" ] && continue
-            if [[ "$line" == slideshow:* ]]; then
-              prefix="${line#slideshow:}"; n=1
-              while fetch "${prefix}_${n}.jpg"; do n=$((n+1)); done
-              echo "Slideshow $prefix: $((n-1)) immagini"
-            else
-              fetch "$line" || { ko=$((ko+1)); echo "ERR $line"; }
-            fi
-          done < legacy/assets.txt
-          echo "Scaricati: $ok  –  Errori: $ko"
+        run: python3 scripts/legacy/fetch.py
       - name: Commit
         run: |
           git config user.name "github-actions[bot]"
