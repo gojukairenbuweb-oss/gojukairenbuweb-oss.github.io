@@ -66,3 +66,22 @@ page:gare_internazionali.html
 page:campionati_europei__mondiali_ikga.html
 page:seminari_ikga.html
 page:foto_gruppi.html
+# Gli atleti
+page:atleti.html
+page:pierluigi_santoni.html
+page:carlotta_zanello.html
+page:giulia_notarnicola.html
+# Classifiche e Link
+page:classifiche_societa.html
+files/98-2002.pdf
+files/2003-2005.pdf
+files/2006-2008.pdf
+files/2009-2010.pdf
+files/2011-2012.pdf
+page:altri_siti.html
+# Gallerie collegate dalla pagina atleti
+page:2_iku_world_championschip_2015_maribor_slovenia.html
+page:coppa_autunno_fik_2015.html
+page:trofeo_lazio_fik_2016.html
+page:sardegna_2016.html
+page:6_camp_ital_e_coppa_italia_fik_2013_terni.html
