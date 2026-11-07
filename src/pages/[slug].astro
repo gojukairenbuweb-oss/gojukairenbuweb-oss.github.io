@@ -44,6 +44,20 @@ const d = pagina.data;
         </ul>
       )}
 
+      {d.album.map((a) => (
+        <section class="album" aria-label={a.titolo}>
+          <h2>{a.titolo}</h2>
+          <div class="gallery">
+            {a.foto.map((f) => (
+              <figure>
+                <a href={f.immagine}><img src={f.immagine} alt={f.didascalia ?? a.titolo} loading="lazy" /></a>
+                {f.didascalia && <figcaption>{f.didascalia}</figcaption>}
+              </figure>
+            ))}
+          </div>
+        </section>
+      ))}
+
       {d.galleria.length > 0 && (
         <section class="gallery" aria-label="Galleria">
           {d.galleria.map((g) => (

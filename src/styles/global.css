@@ -81,3 +81,8 @@ main { max-width: 64rem; margin: 0 auto; padding: 2rem clamp(1rem, 4vw, 3rem); }
 .gallery figure a { display: block; }
 /* ultima voce del menu: sottomenu allineato a destra per non uscire dallo schermo */
 @media (min-width: 701px) { .menu > li:last-child .sub { left: auto; right: -0.75rem; } }
+
+/* Home: pugno sopra al titolo */
+.home-hero { text-align: center; margin: 1rem 0 1.5rem; }
+.home-hero img { width: clamp(64px, 9vw, 96px); height: auto; display: block; margin: 0 auto 0.5rem; }
+.home-hero h1 { margin: 0; font-size: clamp(1.8rem, 5vw, 2.8rem); }

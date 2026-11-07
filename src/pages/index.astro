@@ -1,22 +1,25 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
-import { formatDate, isPublished, byDateDesc } from '../lib/format';
+import { formatDate, formatRange, eventoFuturo, isPublished, byDateDesc } from '../lib/format';
 import { gallerieOrdinate, quando } from '../lib/gallerie';
 
 const news = (await getCollection('news', isPublished)).sort(byDateDesc).slice(0, 3);
 const oggi = new Date(new Date().toDateString());
 const eventi = (await getCollection('eventi', isPublished))
-  .filter((e) => e.data.date >= oggi)
+  .filter((e) => eventoFuturo(e, oggi))
   .sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf())
   .slice(0, 3);
 const gallerie = (await gallerieOrdinate()).slice(0, 3);
 ---
 
 <Base title="Home">
-  <h1>Karate Goju Kai a Roma</h1>
+  <div class="home-hero">
+    <img src="/media/pagine/chi-siamo/pugno.webp" alt="" width="96" height="95" />
+    <h1>A.S.D. Goju Kai Renbukan</h1>
+  </div>
   <p>
-    Gojukai Italia Renbukan, rappresentanza italiana I.K.G.A. Corsi per bambini e agonisti diretti dallo
+    Gojukai Italia Renbukan, rappresentanza italiana I.K.G.A. Corso base e corso avanzato diretti dallo
     Shihan Luciano Masci. <a href="/corsi/">Orari e iscrizioni</a>.
   </p>
 
@@ -33,7 +36,7 @@ const gallerie = (await gallerieOrdinate()).slice(0, 3);
   <h2>Prossimi eventi</h2>
   {eventi.length === 0 ? <p class="meta">Nessun evento in programma.</p> : (
     <ul>
-      {eventi.map((e) => <li><a href={`/eventi/${e.id}/`}>{e.data.title}</a> – {formatDate(e.data.date)}{e.data.luogo && `, ${e.data.luogo}`}</li>)}
+      {eventi.map((e) => <li><a href={`/eventi/${e.id}/`}>{e.data.title}</a> – {formatRange(e.data.date, e.data.data_fine)}{e.data.luogo && `, ${e.data.luogo}`}</li>)}
     </ul>
   )}
 

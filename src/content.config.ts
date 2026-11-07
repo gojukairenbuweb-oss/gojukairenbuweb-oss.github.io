@@ -18,7 +18,8 @@ const eventi = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/eventi' }),
   schema: z.object({
     title: z.string(),
-    date: z.coerce.date(),
+    date: z.coerce.date(), // data di inizio
+    data_fine: z.coerce.date().optional(), // per eventi su più giorni
     luogo: z.string().optional(),
     tipo: z.enum(['Gara', 'Seminario', 'Esame', 'Corso', 'Altro']).default('Altro'),
     draft: z.boolean().default(false),
@@ -72,6 +73,15 @@ const pagine = defineCollection({
       .array(z.object({ immagine: z.string(), didascalia: z.string().optional() }))
       .default([]),
     allegati: z.array(z.object({ titolo: z.string(), file: z.string() })).default([]),
+    // album fotografici aggiuntivi con titolo proprio (es. "Diplomi"), mostrati dopo il testo
+    album: z
+      .array(
+        z.object({
+          titolo: z.string(),
+          foto: z.array(z.object({ immagine: z.string(), didascalia: z.string().optional() })).default([]),
+        }),
+      )
+      .default([]),
   }),
 });
 
