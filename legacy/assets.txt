@@ -97,3 +97,5 @@ images/home_0_08_07.jpg
 images/home_0_08_08.jpg
 images/home_0_08_09.jpg
 images/home_0_08_010.jpg
+# Responsabili europei (immagine che rimanda a un PDF)
+page:responsabili_europei.html
