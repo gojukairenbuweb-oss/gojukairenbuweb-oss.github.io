@@ -65,6 +65,12 @@ for line in Path('legacy/assets.txt').read_text().splitlines():
         if not any(f.startswith('imagebrowser/ib_') for f in files):
             for prefix in sorted(set(re.findall(r'imagebrowser/(p[0-9]+_\d+)_\d+\.png', text))):
                 files += [f for f in series(f'imagebrowser/ib_{prefix}') if f not in files]
+        # nessuna foto grande pubblicata: si recuperano almeno le miniature
+        if not files:
+            thumbs = sorted(set(re.findall(r'imagebrowser/p[0-9]+_\d+_\d+\.png', text)),
+                            key=lambda x: int(re.search(r'_(\d+)\.png$', x).group(1)))
+            files = [t for t in thumbs if fetch(t)]
+            if files: print(f'Pagina {page}: solo miniature disponibili')
         (RAW / 'pages' / (page + '.txt')).write_text('\n'.join(files) + '\n')
         print(f'Pagina {page}: {len(files)} immagini')
     else:
