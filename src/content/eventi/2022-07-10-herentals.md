@@ -1,8 +1,11 @@
 ---
 title: Seminario IKGA Herentals
-date: 2022-07-10
-luogo: Herentals (Belgio)
-tipo: Seminario
+date: 2026-11-29
+luogo: 5° Trofeo "Tutti pazzi per il Karate"
+tipo: Gara
 draft: false
 ---
-Partecipazione al seminario internazionale I.K.G.A. *(Evento di esempio, archivio)*
+
+Domenica 29 Novembre 2026, presso il Palazzetto dello Sport di Frascati - Viale Luigi Einaudi 7, Località Vermicino - Comune di Frascati RM, si terrà il 5° Trofeo Lazio "Tutti pazzi per il Karate".
+
+Aperto a tutte le età e tutti i livelli.
