@@ -5,7 +5,7 @@ summary: |-
   Facciamo qualche prova di allineamento.
   #gojukainrenbukan
 cover: /media/p064_1_1.webp
-draft: true
+draft: false
 ---
 
 Stiamo tornando online.
