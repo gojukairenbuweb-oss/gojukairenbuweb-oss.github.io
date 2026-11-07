@@ -1,27 +1,17 @@
 ---
-import Base from '../../layouts/Base.astro';
-import { categorieConGallerie } from '../../lib/gallerie';
-
+import PageLayout from '~/layouts/PageLayout.astro';
+import PageShell from '~/components/site/PageShell.astro';
+import CardGrid from '~/components/site/CardGrid.astro';
+import { categorieConGallerie } from '~/lib/gallerie';
 const categorie = await categorieConGallerie();
 ---
-
-<Base title="Foto Gallery">
-  <h1>Foto Gallery</h1>
-  <ul class="cards categories">
-    {categorie.map((c) => (
-      <li class="card">
-        <a href={`/gallerie/categoria/${c.slug}/`}>
-          {c.gallerie[0]?.data.foto[0]
-            ? <img src={c.gallerie[0].data.foto[0].immagine} alt="" loading="lazy" />
-            : <div class="card-empty" aria-hidden="true"></div>}
-          <div class="body">
-            <strong>{c.nome}</strong>
-            <div class="meta">
-              {c.gallerie.length === 0 ? 'In arrivo' : `${c.gallerie.length} ${c.gallerie.length === 1 ? 'galleria' : 'gallerie'} · ${c.gallerie.reduce((n, g) => n + g.data.foto.length, 0)} foto`}
-            </div>
-          </div>
-        </a>
-      </li>
-    ))}
-  </ul>
-</Base>
+<PageLayout metadata={{ title: 'Foto Gallery' }}>
+  <PageShell title="Foto Gallery">
+    <CardGrid cards={categorie.map((c) => ({
+      href: `/gallerie/categoria/${c.slug}`,
+      title: c.nome,
+      image: c.gallerie[0]?.data.foto[0]?.immagine,
+      meta: c.gallerie.length === 0 ? 'In arrivo' : `${c.gallerie.length} ${c.gallerie.length === 1 ? 'galleria' : 'gallerie'} · ${c.gallerie.reduce((n, g) => n + g.data.foto.length, 0)} foto`,
+    }))} />
+  </PageShell>
+</PageLayout>

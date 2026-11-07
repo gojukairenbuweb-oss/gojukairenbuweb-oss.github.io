@@ -11,10 +11,37 @@
     "preview": "astro preview"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
     "@sveltia/cms": "^0.261.0",
-    "astro": "^7.4.7"
+    "astro": "^7.4.7",
+    "astro-icon": "^1.1.5",
+    "astro-seo": "^1.2.0",
+    "limax": "4.2.3",
+    "lodash.merge": "^4.6.2",
+    "unpic": "^4.2.2"
   },
   "engines": {
-    "node": ">=22"
+    "node": ">=22.22.3"
+  },
+  "devDependencies": {
+    "@astrojs/markdown-remark": "^7.3.0",
+    "@astrojs/mdx": "^8.0.0",
+    "@astrojs/partytown": "^2.1.7",
+    "@iconify-json/flat-color-icons": "^1.2.3",
+    "@iconify-json/tabler": "^1.2.38",
+    "@tailwindcss/typography": "^0.5.20",
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/js-yaml": "^4.0.9",
+    "@types/lodash.merge": "^4.6.9",
+    "@types/mdx": "^2.0.14",
+    "astro-compress": "^2.4.3",
+    "js-yaml": "^4.3.2",
+    "mdast-util-to-string": "^4.0.0",
+    "reading-time": "^1.5.0",
+    "sharp": "^0.35.3",
+    "tailwind-merge": "^3.6.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.66.0"
   }
 }

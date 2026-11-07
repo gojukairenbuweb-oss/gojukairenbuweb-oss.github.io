@@ -1,19 +1,19 @@
 ---
 import { getCollection, render } from 'astro:content';
-import Base from '../../layouts/Base.astro';
-import { formatDate, isPublished } from '../../lib/format';
-
+import PageLayout from '~/layouts/PageLayout.astro';
+import PageShell from '~/components/site/PageShell.astro';
+import Prose from '~/components/site/Prose.astro';
+import { formatDate, isPublished } from '~/lib/format';
 export async function getStaticPaths() {
-  const news = await getCollection('news', isPublished);
-  return news.map((n) => ({ params: { slug: n.id }, props: { item: n } }));
+  return (await getCollection('news', isPublished)).map((n) => ({ params: { slug: n.id }, props: { item: n } }));
 }
 const { item } = Astro.props;
 const { Content } = await render(item);
 ---
-
-<Base title={item.data.title} description={item.data.summary}>
-  <p class="meta"><a href="/news/">← News</a> · {formatDate(item.data.date)}</p>
-  <h1>{item.data.title}</h1>
-  {item.data.cover && <img src={item.data.cover} alt="" />}
-  <Content />
-</Base>
+<PageLayout metadata={{ title: item.data.title, description: item.data.summary }}>
+  <PageShell title={item.data.title} kicker={`News · ${formatDate(item.data.date)}`}>
+    {item.data.cover && <img src={item.data.cover} alt="" class="rounded-xl mb-8 max-w-full md:max-w-xl shadow-sm" />}
+    <Prose><Content /></Prose>
+    <p class="mt-10"><a href="/news" class="text-primary font-semibold">← Tutte le news</a></p>
+  </PageShell>
+</PageLayout>

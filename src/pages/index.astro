@@ -1,49 +1,103 @@
 ---
 import { getCollection } from 'astro:content';
-import Base from '../layouts/Base.astro';
-import { formatDate, isPublished, byDateDesc } from '../lib/format';
-import { gallerieOrdinate, quando } from '../lib/gallerie';
+import PageLayout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import CardGrid from '~/components/site/CardGrid.astro';
+import { formatDate, isPublished, byDateDesc } from '~/lib/format';
+import { gallerieOrdinate, quando } from '~/lib/gallerie';
 
 const news = (await getCollection('news', isPublished)).sort(byDateDesc).slice(0, 3);
+const gallerie = (await gallerieOrdinate()).slice(0, 3);
 const oggi = new Date(new Date().toDateString());
 const eventi = (await getCollection('eventi', isPublished))
   .filter((e) => e.data.date >= oggi)
   .sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf())
   .slice(0, 3);
-const gallerie = (await gallerieOrdinate()).slice(0, 3);
 ---
 
-<Base title="Home">
-  <h1>Karate Goju Kai a Roma</h1>
-  <p>
-    A.S.D. Renbukan, rappresentanza italiana I.K.G.A. Corsi per bambini e agonisti diretti dallo
-    Shihan Luciano Masci. <a href="/corsi/">Orari e iscrizioni</a>.
-  </p>
+<PageLayout metadata={{ title: 'A.S.D. Renbukan – Karate Goju Kai Roma', ignoreTitleTemplate: true }}>
+  <Hero
+    tagline="Goju Ryu Karate Do · I.K.G.A. Italia"
+    actions={[
+      { variant: 'primary', text: 'Corsi e orari', href: '/corsi' },
+      { text: 'Chi siamo', href: '/chi-siamo' },
+    ]}
+    image={{ src: '/media/gallerie/2022-herentals-belgio/01.webp', alt: 'Allenamento al seminario europeo I.K.G.A. di Herentals, 2022' }}
+  >
+    <Fragment slot="title">Karate <span class="text-primary">Goju Kai</span> a Roma</Fragment>
+    <Fragment slot="subtitle">
+      La scuola <strong>Ren Bu Kan</strong> dello Shihan-Renshi <strong>Luciano Masci</strong>, 6° Dan I.K.G.A. e responsabile
+      I.K.G.A. per l'Italia. Corsi per bambini e agonisti in zona San Paolo.
+    </Fragment>
+  </Hero>
 
-  <h2>Ultime news</h2>
-  <ul class="cards">
-    {news.map((n) => (
-      <li class="card"><a href={`/news/${n.id}/`}>
-        {n.data.cover && <img src={n.data.cover} alt="" loading="lazy" />}
-        <div class="body"><strong>{n.data.title}</strong><div class="meta">{formatDate(n.data.date)}</div></div>
-      </a></li>
-    ))}
-  </ul>
+  <Features2
+    tagline="La scuola"
+    title="Tradizione Goju Ryu, dal 1980 a Roma"
+    columns={3}
+    items={[
+      { title: 'Il Maestro', description: 'Shihan Luciano Masci: 6° Dan I.K.G.A., 7° Dan FIK, arbitro internazionale, campione europeo e mondiale.', icon: 'tabler:award', href: '/il-maestro' },
+      { title: 'La storia', description: 'Dalle origini a Okinawa con Chojun Miyagi al Goju Kai di Gogen Yamaguchi: lo stile "duro e morbido".', icon: 'tabler:book', href: '/storia' },
+      { title: "L'I.K.G.A.", description: 'Affiliati alla International Karate-do Gojukai Association: seminari ed esami in tutto il mondo.', icon: 'tabler:world', href: '/organigramma' },
+    ]}
+  />
 
-  <h2>Prossimi eventi</h2>
-  {eventi.length === 0 ? <p class="meta">Nessun evento in programma.</p> : (
-    <ul>
-      {eventi.map((e) => <li><a href={`/eventi/${e.id}/`}>{e.data.title}</a> – {formatDate(e.data.date)}{e.data.luogo && `, ${e.data.luogo}`}</li>)}
-    </ul>
-  )}
+  <Content
+    isReversed
+    tagline="Allenati con noi"
+    title="I corsi"
+    items={[
+      { title: 'Bambini', description: 'Lunedì, mercoledì e venerdì, dalle 17.00 alle 18.00' },
+      { title: 'Agonisti', description: 'Lunedì, mercoledì e venerdì, dalle 18.30 alle 20.00' },
+      { title: 'Dove', description: 'Via Antonino Pio 78, Roma (zona San Paolo)' },
+    ]}
+    image={{ src: '/media/pagine/dove-siamo/dojo-1.webp', alt: 'Il dojo Ren Bu Kan', aspect: '4/3' }}
+    callToAction={{ text: 'Tutti i dettagli', href: '/corsi', variant: 'secondary' }}
+  />
 
-  <h2>Gallerie recenti</h2>
-  <ul class="cards">
-    {gallerie.map((g) => (
-      <li class="card"><a href={`/gallerie/${g.id}/`}>
-        {g.data.foto[0] && <img src={g.data.foto[0].immagine} alt="" loading="lazy" />}
-        <div class="body"><strong>{g.data.title}</strong><div class="meta">{g.data.categoria} · {quando(g)}</div></div>
-      </a></li>
-    ))}
-  </ul>
-</Base>
+  {
+    news.length > 0 && (
+      <section class="px-4 py-12 mx-auto max-w-6xl">
+        <div class="flex items-end justify-between mb-6">
+          <h2 class="font-heading text-3xl font-bold">Ultime news</h2>
+          <a href="/news" class="text-primary font-semibold">Tutte le news →</a>
+        </div>
+        <CardGrid cards={news.map((n) => ({ href: `/news/${n.id}`, title: n.data.title, image: n.data.cover, meta: formatDate(n.data.date), text: n.data.summary }))} />
+      </section>
+    )
+  }
+
+  {
+    eventi.length > 0 && (
+      <section class="px-4 py-8 mx-auto max-w-6xl">
+        <h2 class="font-heading text-3xl font-bold mb-4">Prossimi eventi</h2>
+        <ul class="divide-y divide-black/10 rounded-xl bg-white ring-1 ring-black/5">
+          {eventi.map((e) => (
+            <li class="p-4 flex flex-wrap gap-x-4 gap-y-1 items-baseline">
+              <span class="font-semibold text-primary tabular-nums">{formatDate(e.data.date)}</span>
+              <a href={`/eventi/${e.id}`} class="font-semibold hover:text-primary">{e.data.title}</a>
+              {e.data.luogo && <span class="text-muted">{e.data.luogo}</span>}
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  <section class="px-4 py-12 mx-auto max-w-6xl">
+    <div class="flex items-end justify-between mb-6">
+      <h2 class="font-heading text-3xl font-bold">Foto Gallery</h2>
+      <a href="/gallerie" class="text-primary font-semibold">Tutte le gallerie →</a>
+    </div>
+    <CardGrid cards={gallerie.map((g) => ({ href: `/gallerie/${g.id}`, title: g.data.title, image: g.data.foto[0]?.immagine, meta: `${quando(g)} · ${g.data.foto.length} foto` }))} />
+  </section>
+
+  <CallToAction
+    actions={[{ variant: 'primary', text: 'Vieni a provare', href: '/corsi' }]}
+    title="La prima lezione è di prova"
+    subtitle="Bambini e adulti, principianti ed esperti: passa in palestra a conoscere il Maestro e il nostro modo di allenarci."
+  />
+</PageLayout>

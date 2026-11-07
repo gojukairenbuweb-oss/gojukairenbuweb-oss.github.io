@@ -1,0 +1,62 @@
+site:
+  name: A.S.D. Renbukan – Goju Kai Roma
+  site: 'https://gojukairenbuweb-oss.github.io'
+  base: '/'
+  trailingSlash: false
+
+# Metadati SEO predefiniti
+metadata:
+  title:
+    default: A.S.D. Renbukan – Karate Goju Kai Roma
+    template: '%s — A.S.D. Renbukan'
+  description: 'A.S.D. Renbukan: scuola di karate Goju Ryu – Goju Kai a Roma, rappresentanza italiana I.K.G.A. Corsi per bambini e agonisti.'
+  robots:
+    # PoC: non indicizzare
+    index: false
+    follow: false
+  openGraph:
+    site_name: A.S.D. Renbukan
+    images:
+      - url: '~/assets/images/default.png'
+        width: 1200
+        height: 628
+    type: website
+
+i18n:
+  language: it
+  textDirection: ltr
+
+apps:
+  blog:
+    isEnabled: false
+    postsPerPage: 8
+    post:
+      isEnabled: false
+      permalink: '/%slug%'
+      robots:
+        index: false
+    list:
+      isEnabled: false
+      pathname: 'blog'
+      robots:
+        index: false
+    category:
+      isEnabled: false
+      pathname: 'category'
+      robots:
+        index: false
+    tag:
+      isEnabled: false
+      pathname: 'tag'
+      robots:
+        index: false
+    isRelatedPostsEnabled: false
+    relatedPostsCount: 4
+
+analytics:
+  vendors:
+    googleAnalytics:
+      id: null
+
+ui:
+  theme: 'light:only'

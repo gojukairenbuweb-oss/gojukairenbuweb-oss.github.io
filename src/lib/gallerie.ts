@@ -1,6 +1,6 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
-import { CATEGORIE_GALLERIE } from '../content.config';
-import { isPublished } from './format';
+import { CATEGORIE_GALLERIE } from '~/content.config';
+import { isPublished } from '~/lib/format';
 
 export type Galleria = CollectionEntry<'gallerie'>;
 

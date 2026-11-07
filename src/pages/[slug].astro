@@ -1,6 +1,9 @@
 ---
 import { getCollection, render } from 'astro:content';
-import Base from '../layouts/Base.astro';
+import PageLayout from '~/layouts/PageLayout.astro';
+import PageShell from '~/components/site/PageShell.astro';
+import Prose from '~/components/site/Prose.astro';
+import Gallery from '~/components/widgets/Gallery.astro';
 
 export async function getStaticPaths() {
   const pagine = await getCollection('pagine');
@@ -8,9 +11,7 @@ export async function getStaticPaths() {
     params: { slug: p.id },
     props: {
       pagina: p,
-      fratelli: pagine
-        .filter((x) => x.data.sezione === p.data.sezione && x.data.menu)
-        .sort((a, b) => a.data.order - b.data.order),
+      fratelli: pagine.filter((x) => x.data.sezione === p.data.sezione && x.data.menu).sort((a, b) => a.data.order - b.data.order),
     },
   }));
 }
@@ -19,41 +20,34 @@ const { Content } = await render(pagina);
 const d = pagina.data;
 ---
 
-<Base title={d.title}>
-  <div class="page-layout">
-    {fratelli.length > 1 && (
-      <aside class="section-nav" aria-label={`Sezione ${d.sezione}`}>
-        <p class="section-title">{d.sezione}</p>
-        <ul>
-          {fratelli.map((f) => (
-            <li><a href={`/${f.id}/`} aria-current={f.id === pagina.id ? 'page' : undefined}>{f.data.title}</a></li>
-          ))}
-        </ul>
-      </aside>
-    )}
-    <article class="page">
-      <h1>{d.title}</h1>
-      {d.cover && <img class="cover" src={d.cover} alt={d.cover_alt ?? ''} />}
-      <div class="prose"><Content /></div>
-
-      {d.allegati.length > 0 && (
-        <ul class="attachments">
+<PageLayout metadata={{ title: d.title }}>
+  <PageShell
+    title={d.title}
+    kicker={d.sezione}
+    nav={fratelli.length > 1 ? { title: d.sezione, items: fratelli.map((f) => ({ text: f.data.title, href: `/${f.id}`, current: f.id === pagina.id })) } : undefined}
+  >
+    {d.cover && <img src={d.cover} alt={d.cover_alt ?? ""} class="rounded-xl mb-8 w-auto max-w-full max-h-[26rem] md:float-right md:ml-8 md:max-w-[45%] shadow-sm" />}
+    <Prose><Content /></Prose>
+    {
+      d.allegati.length > 0 && (
+        <ul class="mt-8 grid gap-3">
           {d.allegati.map((a) => (
-            <li><a href={a.file} target="_blank" rel="noopener">📄 {a.titolo}</a></li>
+            <li>
+              <a href={a.file} target="_blank" rel="noopener" class="btn btn-secondary">📄 {a.titolo}</a>
+            </li>
           ))}
         </ul>
-      )}
-
-      {d.galleria.length > 0 && (
-        <section class="gallery" aria-label="Galleria">
-          {d.galleria.map((g) => (
-            <figure>
-              <a href={g.immagine}><img src={g.immagine} alt={g.didascalia ?? ''} loading="lazy" /></a>
-              {g.didascalia && <figcaption>{g.didascalia}</figcaption>}
-            </figure>
-          ))}
-        </section>
-      )}
-    </article>
-  </div>
-</Base>
+      )
+    }
+  </PageShell>
+  {
+    d.galleria.length > 0 && (
+      <Gallery
+        title="Galleria"
+        columns={3}
+        images={d.galleria.map((g, i) => ({ src: g.immagine, alt: g.didascalia ?? `${d.title} – foto ${i + 1}`, caption: g.didascalia }))}
+        classes={{ container: 'pt-0' }}
+      />
+    )
+  }
+</PageLayout>

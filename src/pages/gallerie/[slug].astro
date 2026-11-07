@@ -1,30 +1,21 @@
 ---
 import { render } from 'astro:content';
-import Base from '../../layouts/Base.astro';
-import { gallerieOrdinate, quando, slugCategoria } from '../../lib/gallerie';
-
+import PageLayout from '~/layouts/PageLayout.astro';
+import PageShell from '~/components/site/PageShell.astro';
+import Prose from '~/components/site/Prose.astro';
+import Gallery from '~/components/widgets/Gallery.astro';
+import { gallerieOrdinate, quando, slugCategoria } from '~/lib/gallerie';
 export async function getStaticPaths() {
-  const gallerie = await gallerieOrdinate();
-  return gallerie.map((g) => ({ params: { slug: g.id }, props: { item: g } }));
+  return (await gallerieOrdinate()).map((g) => ({ params: { slug: g.id }, props: { item: g } }));
 }
 const { item } = Astro.props;
 const { Content } = await render(item);
 const d = item.data;
 ---
-
-<Base title={d.title}>
-  <p class="meta">
-    <a href="/gallerie/">Foto Gallery</a> › <a href={`/gallerie/categoria/${slugCategoria(d.categoria)}/`}>{d.categoria}</a>
-  </p>
-  <h1>{d.title}</h1>
-  <p class="meta">{quando(item)}{d.luogo && ` · ${d.luogo}`} · {d.foto.length} foto</p>
-  <div class="prose"><Content /></div>
-  <div class="gallery">
-    {d.foto.map((f, i) => (
-      <figure>
-        <a href={f.immagine}><img src={f.immagine} alt={f.didascalia ?? `${d.title} – foto ${i + 1}`} loading="lazy" /></a>
-        {f.didascalia && <figcaption>{f.didascalia}</figcaption>}
-      </figure>
-    ))}
-  </div>
-</Base>
+<PageLayout metadata={{ title: d.title }}>
+  <PageShell title={d.title} kicker={d.categoria}>
+    <p class="text-muted -mt-3 mb-6">{quando(item)}{d.luogo && ` · ${d.luogo}`} · {d.foto.length} foto · <a class="text-primary" href={`/gallerie/categoria/${slugCategoria(d.categoria)}`}>altre gallerie della categoria</a></p>
+    <Prose><Content /></Prose>
+  </PageShell>
+  <Gallery columns={4} images={d.foto.map((f, i) => ({ src: f.immagine, alt: f.didascalia ?? `${d.title} – foto ${i + 1}`, caption: f.didascalia }))} classes={{ container: 'pt-0' }} />
+</PageLayout>

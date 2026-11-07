@@ -1,0 +1,38 @@
+---
+// Contenitore per pagine di testo: titolo, menu laterale di sezione (facoltativo) e contenuto
+interface Props {
+  title: string;
+  kicker?: string;
+  nav?: { title: string; items: { text: string; href: string; current?: boolean }[] };
+}
+const { title, kicker, nav } = Astro.props;
+---
+
+<section class="px-4 py-10 md:py-14 mx-auto max-w-6xl">
+  <div class:list={['grid gap-8 lg:gap-12', nav && 'lg:grid-cols-[14rem_1fr]']}>
+    {
+      nav && (
+        <aside class="order-2 lg:order-1" aria-label={nav.title}>
+          <div class="lg:sticky lg:top-24 border-l-4 border-primary pl-4">
+            <p class="text-xs uppercase tracking-widest text-muted mb-2">{nav.title}</p>
+            <ul class="space-y-1">
+              {nav.items.map((i) => (
+                <li>
+                  <a href={i.href} aria-current={i.current ? 'page' : undefined}
+                    class:list={['block py-1.5 hover:text-primary', i.current ? 'text-primary font-semibold' : 'text-default']}>
+                    {i.text}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </aside>
+      )
+    }
+    <article class="order-1 lg:order-2 min-w-0">
+      {kicker && <p class="text-sm font-semibold uppercase tracking-widest text-primary mb-2">{kicker}</p>}
+      <h1 class="font-heading text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight mb-6">{title}</h1>
+      <slot />
+    </article>
+  </div>
+</section>
