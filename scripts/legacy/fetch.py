@@ -71,6 +71,9 @@ for line in Path('legacy/assets.txt').read_text().splitlines():
                             key=lambda x: int(re.search(r'_(\d+)\.png$', x).group(1)))
             files = [t for t in thumbs if fetch(t)]
             if files: print(f'Pagina {page}: solo miniature disponibili')
+        # documenti collegati dalla pagina (es. PDF aperto cliccando un'immagine)
+        for doc in sorted(set(re.findall(r'files/[A-Za-z0-9_\-\.]+\.pdf', text, re.I))):
+            if fetch(doc): print('Documento', doc)
         (RAW / 'pages' / (page + '.txt')).write_text('\n'.join(files) + '\n')
         print(f'Pagina {page}: {len(files)} immagini')
     else:

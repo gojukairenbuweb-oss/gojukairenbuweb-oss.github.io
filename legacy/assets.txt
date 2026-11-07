@@ -85,3 +85,15 @@ page:coppa_autunno_fik_2015.html  # solo miniature
 page:trofeo_lazio_fik_2016.html
 page:sardegna_2016.html
 page:6_camp_ital_e_coppa_italia_fik_2013_terni.html
+# Organigramma (immagine che rimanda a un PDF) e diplomi del Maestro (home del vecchio sito)
+page:organigramma_centrale.html
+images/home_0_08_01.jpg
+images/home_0_08_02.jpg
+images/home_0_08_03.jpg
+images/home_0_08_04.jpg
+images/home_0_08_05.jpg
+images/home_0_08_06.jpg
+images/home_0_08_07.jpg
+images/home_0_08_08.jpg
+images/home_0_08_09.jpg
+images/home_0_08_010.jpg
