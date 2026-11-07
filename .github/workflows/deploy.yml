@@ -22,7 +22,8 @@ permissions:
 
 jobs:
   deploy:
-    runs-on: self-hosted
+    # label dedicata: il job gira solo sul runner registrato per questo progetto
+    runs-on: [self-hosted, gojuren]
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
