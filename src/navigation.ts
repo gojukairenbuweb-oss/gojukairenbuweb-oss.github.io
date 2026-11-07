@@ -29,7 +29,7 @@ export async function getHeaderData() {
         ],
       },
     ],
-    actions: [{ text: 'Prova gratuita', href: '/corsi', variant: 'primary' as const }],
+    actions: [{ text: 'Prova gratuita', href: 'https://www.overloadgym.it/fitness/karate/#wpcf7-f24954-p24955-o1', target: '_blank', variant: 'primary' as const }],
   };
 }
 

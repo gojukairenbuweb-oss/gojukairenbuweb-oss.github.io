@@ -80,22 +80,22 @@ foto:
   - immagine: /media/gallerie/2019-europei-ikga-tata/72.webp
   - immagine: /media/gallerie/2019-europei-ikga-tata/73.webp
 ---
-European Championships I.K.G.A., Ungheria – 14 luglio 2019.
+Campionato Europeo I.K.G.A., Tata (Ungheria) – 14 luglio 2019.
 
 **Risultati**
 
 *Kata*
 
 - Luciano Masci – 1° classificato
-- Hadzovic Nicholas – 1° classificato
-- Romero Leira Michela – 1° classificata
-- Alice Locchi – 2° classificata
-- Veronica Coppola – 3° classificata
+- Nicholas Hadzovic – 1° classificato
+- Michela Romero Leira – 1ª classificata
+- Alice Locchi – 2ª classificata
+- Veronica Coppola – 3ª classificata
 
 *Kumite*
 
-- Romero Leira Michela – 3° classificata
+- Michela Romero Leira – 3ª classificata
 
 *Squadra Kata*
 
-- Coppola – Di Maria – Locchi – 1° classificate
+- Coppola, Di Maria, Locchi – 1ª classificata

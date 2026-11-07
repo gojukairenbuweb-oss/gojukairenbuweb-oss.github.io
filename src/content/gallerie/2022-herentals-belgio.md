@@ -125,4 +125,4 @@ foto:
 categoria: Seminari I.K.G.A.
 ---
 
-Si è svolto ad Herentals (Belgio) dal 18 al 23 luglio 2022 il 35° European Seminar I.K.G.A.
+Si è svolto a Herentals (Belgio) dal 18 al 23 luglio 2022 il 35° European Seminar I.K.G.A.

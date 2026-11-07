@@ -20,4 +20,4 @@ galleria:
 
 ![Il nostro stemma: il pugno del Goju Ryu Karate Do](/media/pagine/chi-siamo/stemma.webp) ![La nostra scuola: logo I.K.G.A.](/media/pagine/chi-siamo/logo-ikga.webp)
 
-La nostra scuola di Goju Ryu ha il nome di **REN BU KAN** (Casa o Dojo dove si allena il praticante di arti marziali o Guerriero), affiliata a livello mondiale con la **IKGA** (International Karate Do Goujkai Association) del Maestro Yamaguchi Goshi, dove ogni anno in ogni parte del mondo si organizzano dei seminari di una settimana di allenamenti dove si incontrano i migliori maestri e praticanti di stile Goju Ryu.
+La nostra scuola di Goju Ryu si chiama **REN BU KAN**: la casa, o dojo, in cui si allena il praticante di arti marziali, il guerriero. È affiliata a livello mondiale alla **I.K.G.A.** (International Karate-Do Gojukai Association) del Maestro Yamaguchi Goshi, che ogni anno, in diverse parti del mondo, organizza seminari di una settimana in cui si allenano insieme i migliori maestri e praticanti dello stile Goju Ryu.

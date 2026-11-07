@@ -41,13 +41,13 @@ galleria:
 
 2° Dan Federale – 3° Dan I.K.G.A. (Sensei Shidoin)
 
-**28 Titoli Italiani**
+**28 titoli italiani**
 
 - 1° cl. Coppa del Mondo WKC Valencia (Spagna 2000)
-- 2° cl. Kumite WKF Campionato del Mondo x clubs US. ACLI (Vasto 2005)
-- 2° cl. Kumite WKC Campionato del Mondo x clubs US. ACLI (Vasto 2005)
-- 1° cl. Kumite Ippon Campionato del Mondo x clubs US. ACLI (Vasto 2005)
-- 1° cl. Kata Campionato del Mondo x clubs US. ACLI (Vasto 2005)
+- 2° cl. Kumite WKF Campionato del Mondo per club US ACLI (Vasto 2005)
+- 2° cl. Kumite WKC Campionato del Mondo per club US ACLI (Vasto 2005)
+- 1° cl. Kumite Ippon Campionato del Mondo per club US ACLI (Vasto 2005)
+- 1° cl. Kata Campionato del Mondo per club US ACLI (Vasto 2005)
 - 2° cl. Kata squadra Campionato del Mondo IKGA – Rotterdam (Olanda 2005)
 - 3° cl. Kata Campionato del Mondo IKGA – Rotterdam (Olanda 2005)
 - 3° cl. Kumite Campionato del Mondo IKGA – Rotterdam (Olanda 2005)
@@ -56,7 +56,7 @@ galleria:
 - 2° cl. Kata Campionato Europeo IKGA – Berna (Svizzera 2007)
 - 2° cl. Kata Campionato del Mondo WUKO (Jesolo 2008)
 - 1° cl. Kata 1° Campionato Europeo WUKO (Imperia 2009)
-- 1° cl. Kata squadra Campionato del Mondo IKGA (South Africa 2009)
+- 1° cl. Kata squadra Campionato del Mondo IKGA (Sudafrica 2009)
 - 1° cl. Kata squadra Campionato Europeo IKGA Tatabánya (Ungheria) 2011
 - 1° cl. Kata individuale Campionato Europeo IKGA Tatabánya (Ungheria) 2011
-- 1° cl. THE BEST FEMALE Campionato Europeo IKGA Tatabánya (Ungheria) 2011
+- 1° cl. The Best Female Campionato Europeo IKGA Tatabánya (Ungheria) 2011
