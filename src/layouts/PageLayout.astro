@@ -28,7 +28,7 @@ const footerData = await getFooterData();
   */
   }
   {Astro.slots.has('announcement') && <slot name="announcement" />}
-  {Astro.slots.has('header') ? <slot name="header" /> : <Header {...headerData} isSticky />}
+  {Astro.slots.has('header') ? <slot name="header" /> : <Header {...headerData} isSticky position="right" />}
   <main class="flex-1">
     <slot />
   </main>

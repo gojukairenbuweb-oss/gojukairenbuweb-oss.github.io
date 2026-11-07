@@ -96,7 +96,7 @@ const persistKey = `header-${Array.from(
         </div>
       </div>
       <nav
-        class="items-center w-full lg:w-auto hidden lg:flex lg:mx-5 text-default overflow-y-auto overflow-x-hidden lg:overflow-visible lg:justify-self-center"
+        class="items-center w-full lg:w-auto hidden lg:flex lg:mx-3 xl:mx-5 text-default overflow-y-auto overflow-x-hidden lg:overflow-visible lg:justify-self-center"
         aria-label="Main navigation"
       >
         <ul
@@ -109,7 +109,7 @@ const persistKey = `header-${Array.from(
                   <>
                     <button
                       type="button"
-                      class="hover:text-link dark:hover:text-white px-4 py-3 flex items-center whitespace-nowrap"
+                      class="hover:text-link dark:hover:text-white px-4 lg:px-2.5 xl:px-3 2xl:px-4 py-3 flex items-center whitespace-nowrap"
                     >
                       {text}{' '}
                       <Icon
@@ -136,7 +136,7 @@ const persistKey = `header-${Array.from(
                 ) : (
                   <a
                     class:list={[
-                      'hover:text-link dark:hover:text-white px-4 py-3 flex items-center whitespace-nowrap',
+                      'hover:text-link dark:hover:text-white px-4 lg:px-2.5 xl:px-3 2xl:px-4 py-3 flex items-center whitespace-nowrap',
                       { 'aw-link-active': isActive(href) },
                     ]}
                     href={href}
@@ -172,9 +172,9 @@ const persistKey = `header-${Array.from(
           </div>
           {
             actions?.length ? (
-              <span class="ml-4 rtl:ml-0 rtl:mr-4">
+              <span class="ml-4 rtl:ml-0 rtl:mr-4 lg:hidden xl:inline">
                 {actions.map((btnProps) => (
-                  <Button {...btnProps} class="ml-2 py-2.5 px-5.5 lg:px-6 font-semibold shadow-none text-sm w-auto" />
+                  <Button {...btnProps} class="ml-2 py-2.5 px-5 font-semibold shadow-none text-sm w-auto whitespace-nowrap" />
                 ))}
               </span>
             ) : (

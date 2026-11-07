@@ -1,5 +1,5 @@
 site:
-  name: A.S.D. Renbukan – Goju Kai Roma
+  name: Gojukai Italia Renbukan
   site: 'https://gojukairenbuweb-oss.github.io'
   base: '/'
   trailingSlash: false
@@ -7,15 +7,15 @@ site:
 # Metadati SEO predefiniti
 metadata:
   title:
-    default: A.S.D. Renbukan – Karate Goju Kai Roma
-    template: '%s — A.S.D. Renbukan'
-  description: 'A.S.D. Renbukan: scuola di karate Goju Ryu – Goju Kai a Roma, rappresentanza italiana I.K.G.A. Corsi per bambini e agonisti.'
+    default: Gojukai Italia Renbukan – Karate Goju Ryu a Roma
+    template: '%s — Gojukai Italia Renbukan'
+  description: 'Gojukai Italia Renbukan: scuola di karate Goju Ryu – Goju Kai a Roma, rappresentanza italiana I.K.G.A. Corsi per bambini e agonisti.'
   robots:
     # PoC: non indicizzare
     index: false
     follow: false
   openGraph:
-    site_name: A.S.D. Renbukan
+    site_name: Gojukai Italia Renbukan
     images:
       - url: '~/assets/images/default.png'
         width: 1200

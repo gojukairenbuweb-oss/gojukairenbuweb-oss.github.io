@@ -1,6 +1,6 @@
 # gojuren-poc
 
-Proof of concept del nuovo sito dell'A.S.D. Renbukan (Goju Kai Roma): sito statico **Astro**, pannello di redazione **Sveltia CMS** su repository **GitHub**.
+Proof of concept del nuovo sito Gojukai Italia Renbukan (A.S.D. Renbukan, Roma): sito statico **Astro**, pannello di redazione **Sveltia CMS** su repository **GitHub**.
 
 **PoC attuale:** pubblicato su **GitHub Pages** (`.github/workflows/pages.yml`) → https://gojukairenbuweb-oss.github.io/ – pannello: `/admin/`.
 Le sezioni 2–3 (server proprio + runner self-hosted) restano come riferimento per il passaggio a un hosting definitivo (`deploy/deploy-selfhosted.yml.example`).

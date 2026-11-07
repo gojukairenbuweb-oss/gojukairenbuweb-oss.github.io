@@ -41,6 +41,6 @@ export async function getFooterData() {
       .map((l) => ({ title: l.text, links: (l as { links: { text: string; href: string }[] }).links })),
     secondaryLinks: [{ text: 'Pannello redazione', href: '/admin/' }],
     socialLinks: [],
-    footNote: `A.S.D. Renbukan · Via Cristoforo Colombo, 112 – Roma · Sito di prova (PoC) – contenuti non definitivi · Tema basato su <a class="text-primary underline" href="https://github.com/arthelokyo/astrowind">AstroWind</a> (MIT)`,
+    footNote: `Gojukai Italia Renbukan · A.S.D. Renbukan – Via Cristoforo Colombo, 112 – Roma · Sito di prova (PoC) – contenuti non definitivi · Tema basato su <a class="text-primary underline" href="https://github.com/arthelokyo/astrowind">AstroWind</a> (MIT)`,
   };
 }
