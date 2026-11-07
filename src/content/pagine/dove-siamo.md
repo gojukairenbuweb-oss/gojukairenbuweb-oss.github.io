@@ -15,8 +15,7 @@ galleria:
 ---
 **A.S.D. RENBUKAN**
 
-Via Cristoforo Colombo, 112
-Roma
+Via Cristoforo Colombo, 112 – Roma
 
 - [Apri in Google Maps](https://www.google.com/maps/search/?api=1&query=Via+Cristoforo+Colombo+112,+Roma)
 - [Indicazioni stradali per arrivare](https://www.google.com/maps/dir/?api=1&destination=Via+Cristoforo+Colombo+112,+Roma)
