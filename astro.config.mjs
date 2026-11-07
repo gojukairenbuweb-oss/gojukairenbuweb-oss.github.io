@@ -2,8 +2,8 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  // DA COMPILARE: URL del sito di test, es. https://test.tuodominio.it
-  site: 'https://test.example.org',
+  // PoC su GitHub Pages (repository rinominato in gojukairenbuweb-oss.github.io)
+  site: 'https://gojukairenbuweb-oss.github.io',
   trailingSlash: 'ignore',
   build: {
     format: 'directory',

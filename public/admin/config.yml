@@ -3,7 +3,7 @@
 
 backend:
   name: github
-  repo: gojukairenbuweb-oss/gojuren-poc
+  repo: gojukairenbuweb-oss/gojukairenbuweb-oss.github.io
   branch: main
   # Fase 1: login con Personal Access Token (fine-grained, solo questo repo, Contents: read & write).
   # Fase 2 (OAuth "Accedi con GitHub"): decommentare e puntare al proxy di autenticazione.

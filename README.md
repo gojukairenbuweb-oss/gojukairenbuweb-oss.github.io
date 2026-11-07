@@ -1,6 +1,9 @@
 # gojuren-poc
 
-Proof of concept del nuovo sito dell'A.S.D. Renbukan (Goju Kai Roma): sito statico **Astro**, pannello di redazione **Sveltia CMS** su repository **GitHub**, pubblicazione su un server proprio.
+Proof of concept del nuovo sito dell'A.S.D. Renbukan (Goju Kai Roma): sito statico **Astro**, pannello di redazione **Sveltia CMS** su repository **GitHub**.
+
+**PoC attuale:** pubblicato su **GitHub Pages** (`.github/workflows/pages.yml`) → https://gojukairenbuweb-oss.github.io/ – pannello: `/admin/`.
+Le sezioni 2–3 (server proprio + runner self-hosted) restano come riferimento per il passaggio a un hosting definitivo (`deploy/deploy-selfhosted.yml.example`).
 
 ```
 Redattore ──> /admin (Sveltia, nel browser) ──commit──> GitHub (main)
@@ -20,8 +23,8 @@ Redattore ──> /admin (Sveltia, nel browser) ──commit──> GitHub (main
 | `src/content.config.ts` | Schema dei contenuti: deve restare allineato a `public/admin/config.yml` |
 | `public/admin/config.yml` | Configurazione di Sveltia (collezioni, campi, media, backend) |
 | `public/media/` | Immagini caricate dal CMS (convertite in WebP nel browser) |
-| `.github/workflows/deploy.yml` | Build e deploy con runner self-hosted |
-| `deploy/` | Esempi: vhost nginx, workflow alternativo via SSH |
+| `.github/workflows/pages.yml` | Build e pubblicazione su GitHub Pages |
+| `deploy/` | Esempi per hosting proprio: vhost nginx, workflow self-hosted e via SSH |
 
 Le bozze (`draft: true`) si vedono con `npm run dev` ma non finiscono nel build.
 
