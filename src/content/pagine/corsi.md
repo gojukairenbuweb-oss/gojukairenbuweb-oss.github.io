@@ -13,4 +13,4 @@ I corsi del Maestro:
 | Bambini | dalle 17.00 alle 18.00 |
 | Agonisti | dalle 18.30 alle 20.00 |
 
-**Sede:** Via Antonino Pio 78, Roma – [vedi Dove siamo](/dove-siamo/)
+**Sede:** Via Cristoforo Colombo, 112 – Roma – [vedi Dove siamo](/dove-siamo/)
